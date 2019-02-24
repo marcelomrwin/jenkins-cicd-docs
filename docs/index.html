@@ -6,11 +6,33 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">  
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <style>
+    .print-header {
+      border-bottom: 0;
+      position: fixed;
+      text-decoration: none;
+      bottom:10px;
+      right:10px;
+      z-index: 1;
+    }
+
+    @media print {
+      .print-header {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div id="pdf-div">
+    <a class="print-header" download="javascript:window.location" href="javascript:window.print()" target="_blank" title="Imprimir a página">
+      <img src="images/printer-button.png" width="32" height="32" aria-hidden="true"/>
+    </a>
+  </div>
   <div id="app"></div>
   <script>
+
     window.$docsify = {
       loadSidebar: true,
       subMaxLevel: 4,
@@ -21,7 +43,9 @@
         nextText: 'Próximo'
       }
     }
+
   </script>
+
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
 </body>
