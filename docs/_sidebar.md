@@ -1,4 +1,4 @@
-- CI/CD com Jenkins, SVN, GIT, Nexus e SonarQube
+- CI/CD com Jenkins, SVN, GIT, SonarQube e Nexus
 
   - [Início](/)
   - [Pré Requisitos](/pre_reqs.md)
