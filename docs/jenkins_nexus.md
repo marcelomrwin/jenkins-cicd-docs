@@ -1,3 +1,4 @@
+# {docsify-ignore}
 ## Configurando o Jenkins para acesso ao Nexus e repositórios Maven {docsify-ignore}
 ![](/images/fig54-jenkins.png)
 Acessar **Manage Jenkins** -> **Managed files**
@@ -146,13 +147,10 @@ No campo **Content** preencha com o conteúdo abaixo:
 
 - Clique em **Submit**
 
+<hr/>
 <div class="container">  
-  <div class="bottomright">
-    <div>
-      <a href="#/jenkins_nexus">Ir para o topo</a>
-    </div>
-    <div>
-      <a href="#/">Início</a>
-    </div>
+  <div class="bottomright">    
+      <a href="#">Ir para o topo</a>        
+      <a href="#/">Início</a>    
   </div>
 </div>
