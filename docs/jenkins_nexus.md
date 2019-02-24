@@ -148,11 +148,11 @@ No campo **Content** preencha com o conteúdo abaixo:
 
 <div class="container">  
   <div class="bottomright">
-    <div class="headerDivider">
-      <a href="#jenkins_nexus">Ir para o topo</a>
+    <div>
+      <a href="#/jenkins_nexus">Ir para o topo</a>
     </div>
-    <div class="headerDivider">
-      <a href="/">Início</a>
+    <div>
+      <a href="#/">Início</a>
     </div>
   </div>
 </div>
