@@ -24,22 +24,22 @@ Os seguintes serviços estarão disponíveis:
 - LDAP Server
 
 ### Configuração do GOGS
-![](../../images/fig38-gogs.png)
+![](/images/fig38-gogs.png)
 * Configurar o banco como PostgreSQL
   - **usuário**: gogs
   - **senha**: gogs
   - **Nome do banco**: gogs
-![](../../images/fig39-gogs.png)
+![](/images/fig39-gogs.png)
 * **URL do aplication** inserir `https://192.168.56.140/`
 
-![](../../images/fig40-gogs.png)
+![](/images/fig40-gogs.png)
 Clique em **Registrar** e preencha o formulário
   - **Usuário**: gogs
   - **E-mail**: gogs@cicd.local
   - **Senha**: gogs
   - **Digite novamente**: gogs
 
-![](../../images/fig44-ldap-gogs.png)
+![](/images/fig44-ldap-gogs.png)
 ### Configurar LDAP no Gogs. Preencha o formulário com as informações:
   - **Authentication Type**: LDAP
   - **Security Protocol**: Unecrypted
@@ -58,5 +58,5 @@ Clique em **Add New Source**
 
 *Caso deseje utilize as informações que desejar para criar o usuário, tome nota do usuário e da senha escolhida*
 
-![](../../images/fig41-gogs.png)
+![](/images/fig41-gogs.png)
 * clique em entrar e informe o usuário e senha criados acima.

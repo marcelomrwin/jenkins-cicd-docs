@@ -1,21 +1,21 @@
-### Criar o ambiente
+### Criar o ambiente {docsify-ignore}
 
 <i>Os comandos abaixo fazem referência a um terminal unix</i>
 
 ```
 cd vagrant
 ```
-1. Criar as máquinas virtuais no VirtualBox
+### 1. Criar as máquinas virtuais no VirtualBox
 
 ```
 vagrant up
 ```
-1.1 Se desejar destruir as máquinas utilizar
+### 1.1 Se desejar destruir as máquinas utilizar
 ```
 vagrant destroy -f
 ```
 
-2. Após executar o `vagrant up` execute o playbook ansible
+### 2. Após executar o `vagrant up` execute o playbook ansible
 
 ```
 ansible-playbook -i ../ansible/hosts ../ansible/playbook.yml -vv
