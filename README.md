@@ -5,8 +5,8 @@
 <br/>
 <hr/>
 
-- [Início](/)
-- [Pré Requisitos](/pre_reqs.md)
+- [Início](docs)
+- [Pré Requisitos](docs/pre_reqs.md)
 - [Criação do Ambiente](/cria_amb.md)  
 - [Configuração do ambiente](/configurar_amb_I.md)
 - [Configuração do ambiente cont.](/configurar_amb_II.md)
