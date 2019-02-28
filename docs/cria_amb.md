@@ -107,7 +107,7 @@ Caso deseje provisionar o ambiente sem o uso do vagrant a seguinte infraestrutur
   - 1 Interface de Rede IP 192.168.56.160 (O IP pode ser alterado)
   - Nomeada como sonarqube (O nome pode ser alterado)
 
-O node que será utilizado como _bastion_ (o host sob o qual o playbook ansible será executado) deve ter permissão de acesso livre a todos os outros nodes. Normalmente este passo é executado compartilhando a chave publica entre os nodes. O seguinte [tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-centos7){:target="_blank"} demonstra como proceder.__
+O node que será utilizado como _bastion_ (o host sob o qual o playbook ansible será executado) deve ter permissão de acesso livre a todos os outros nodes. Normalmente este passo é executado compartilhando a chave publica entre os nodes. O seguinte [tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-centos7) demonstra como proceder.
 Também é importante garantir que todas as máquinas conheçam uma a outra. Este passo pode ser alcançado através da edição do arquivo /etc/hosts ou através da configuração de um DNS.
 
 É obrigatório que todas as máquinas tenham permissão de acesso à internet para realizar downloads dos pacotes necessários.
