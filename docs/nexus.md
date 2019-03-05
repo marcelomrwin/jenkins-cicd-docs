@@ -75,6 +75,9 @@ _É importante clicar em **Verify login** para testar as configurações_
 - Clique em **Create role**->**External role mapping**->**LDAP**
 
 ### Criando a Role ***Developer***
+
+**Importante** - Por padrão o Nexus já traz uma ROLE com o nome de developers, exclua esta role antes de criar a nova.
+
 ![](/images/fig49-nexus.png)
 No formulário apresentado preencha com os seguintes dados:
 - **Mapped Role**: Developers
@@ -87,6 +90,8 @@ No formulário apresentado preencha com os seguintes dados:
     - nx-search-read
 - Clique em **Create role**
 
+
+
 ### Criando a Role ***Devops***
 ![](/images/fig48-nexus.png)
 Repita o acesso Configurações -> Security -> Roles -> **Create role mapping**->**LDAP**
@@ -98,12 +103,13 @@ No formulário apresentado preencha com os seguintes dados:
   Mova para a coluna **Contained** o valor:
     - nx-admin    
 - Clique em **Create role**
-- Selecione o tipo **maven2 (proxy)**
+
 
 ### Adicionando novos repositórios no Nexus
 ![](/images/fig59-nexus.png)
 Acesse **Configurações** -> Repositories
 Clique em **Create repository**
+- Selecione o tipo **maven2 (proxy)**
 
 ![](/images/fig60-nexus.png)
 - No campo **Name** informe: _redhat-ga-repository_

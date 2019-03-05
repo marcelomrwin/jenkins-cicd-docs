@@ -32,7 +32,7 @@
   - **Username** jenkins
   - Marque o campo **Private Key** -> **_Enter directly_**.
   - Dentro deste campo deve ser informada a chave privada do usuário. Durante a instalação o ansible copiou no diretório buffer o arquivo jenkins-master-id_rsa.
-  - copie o conteúdo do arquivo para o campo **Key**
+  - copie o conteúdo do arquivo para o campo **Key** `cat buffer/jenkins-master-id_rsa`
   - clique em **Add**
 
 ![](images/fig24-new-node.png)

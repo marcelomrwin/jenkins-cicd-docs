@@ -31,6 +31,7 @@ Os seguintes serviços estarão disponíveis:
   - **Nome do banco**: gogs
 ![](/images/fig39-gogs.png)
 * **URL do aplication** inserir `https://192.168.56.140/`
+* Clique em **Instalar Gogs**
 
 ![](/images/fig40-gogs.png)
 Clique em **Registrar** e preencha o formulário
@@ -39,9 +40,13 @@ Clique em **Registrar** e preencha o formulário
   - **Senha**: gogs
   - **Digite novamente**: gogs
 
+![](/images/fig63-ldap-gogs.png)
+### Acessar menu de configuração
+- No canto superior direito, acessar o menu e selecionar ***Painel do administrador***
+
 ![](/images/fig44-ldap-gogs.png)
 ### Configurar LDAP no Gogs. Preencha o formulário com as informações:
-  - **Authentication Type**: LDAP
+  - **Authentication Type**: LDAP (simple auth)
   - **Security Protocol**: Unecrypted
   - **Host**: 192.168.56.140
   - **Port**: 389

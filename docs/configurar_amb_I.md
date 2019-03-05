@@ -10,7 +10,8 @@ Após a finalização da criação do ambiente acessar a URL https://192.168.56.
 
 ### 4. Clique em <b>Ir para 192.168.56.110 (não seguro)</b>
 ### 5. Recupere a senha definida inicialmente durante a instalação. Existem duas maneiras de recuperar esta senha inicial:
-  - No diretório raiz da execução do ansible na pasta buffer ler o conteúdo do arquivo jenkins-master-initialAdminPassword
+  - No diretório raiz da execução do ansible na pasta buffer ler o conteúdo do arquivo jenkins-master-initialAdminPassword `cat buffer/jenkins-master-initialAdminPassword`
+
   - Recuperar diretamente do jenkins-master
 ```
 ssh root@192.168.56.110 cat /var/lib/jenkins/secrets/initialAdminPassword
@@ -32,7 +33,7 @@ Aguarde a instalação finalizar para prosseguir
 ### 12. Clique em <b>Start using Jenkins</b>
 ![Start Jenkins](images/fig09-login.png)
 
-  - *Em alguns casos o navegador o navegador pode guardar um cache da URL e a tela pode "congelar". Caso isto ocorra digita na URL https://192.168.56.110/login?from=%2F*
+  - *Em alguns casos o navegador o navegador pode guardar um cache da URL e a tela pode "congelar". Caso isto ocorra digite na URL https://192.168.56.110/login?from=%2F*
   - *Pode haver situação que após a configuração do primeiro usuário o Jenkins entre em loop e não permita o login. Para contornar este BUG execute o reinicio do jenkins.*
   ```
   ssh root@192.168.56.110 systemctl restart jenkins

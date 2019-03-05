@@ -15,4 +15,6 @@ No formulário informe os seguintes dados:
 - **ID**: jenkinsldap
 - **Description**: Jenkins LDAP
 
+Clique em **Salvar**
+
 _O usuário acima deve corresponder a usuário presente na base AD/LDAP_

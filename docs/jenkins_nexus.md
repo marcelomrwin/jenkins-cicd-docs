@@ -19,6 +19,7 @@ No formulário preencha com os seguintes dados:
   - company-project
   - nexus-release
   - nexus-snapshot
+
 Para todos selecione a Credentials **Jenkins LDAP**
 
 ![](/images/fig58-jenkins.png)
@@ -26,13 +27,13 @@ No campo **Content** preencha com o conteúdo abaixo:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-      	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
 
   <localRepository>${user.home}/.m2/repository</localRepository>
   <offline>false</offline>
   <profiles>
-	<profile>
+    <profile>
       <id>default-repository</id>
       <properties>
         <downloadSources>true</downloadSources>
@@ -42,7 +43,7 @@ No campo **Content** preencha com o conteúdo abaixo:
 
         <repository>
           <id>company-project</id>
-          <url>https://192.168.56.150/repository/maven-releases/</url>
+          <url>https://192.168.56.150/repository/company-project/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
@@ -51,16 +52,16 @@ No campo **Content** preencha com o conteúdo abaixo:
           </snapshots>
         </repository>
 
-    	  <repository>
+          <repository>
           <id>nexus-release</id>
-     	    <url>https://192.168.56.150/repository/maven-releases/</url>
+             <url>https://192.168.56.150/repository/maven-releases/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
-    	  </repository>
+          </repository>
 
         <repository>
           <id>nexus-snapshot</id>
@@ -75,15 +76,16 @@ No campo **Content** preencha com o conteúdo abaixo:
 
         <repository>
           <id>public</id>
-     	    <url>https://192.168.56.150/repository/public/</url>
+             <url>https://192.168.56.150/repository/public/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
-    	  </repository>
+          </repository>
       </repositories>
+
       <pluginRepositories>
         <pluginRepository>
           <id>nexus-release</id>
@@ -114,7 +116,7 @@ No campo **Content** preencha com o conteúdo abaixo:
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
-        </pluginRepository>        
+        </pluginRepository>
       </pluginRepositories>
     </profile>
   </profiles>
@@ -122,24 +124,38 @@ No campo **Content** preencha com o conteúdo abaixo:
   <servers>
     <server>
       <id>company-project</id>
-      <username></username>
-      <password></password>
+      <username>jenkins</username>
+      <password>password</password>
     </server>
     <server>
       <id>nexus-release</id>
-      <username></username>
-      <password></password>
+      <username>jenkins</username>
+      <password>password</password>
     </server>
     <server>
       <id>nexus-snapshot</id>
-      <username></username>
-      <password></password>
+      <username>jenkins</username>
+      <password>password</password>
+    </server>
+    <server>
+      <id>public</id>
+      <username>jenkins</username>
+      <password>password</password>
     </server>
   </servers>
 
   <activeProfiles>
     <activeProfile>default-repository</activeProfile>
   </activeProfiles>
+
+  <mirrors>
+    <mirror>
+      <id>public</id>
+      <name>public</name>
+      <url>https://192.168.56.150/repository/public/</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
 
 </settings>
 ```

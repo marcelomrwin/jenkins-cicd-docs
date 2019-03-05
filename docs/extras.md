@@ -60,10 +60,16 @@ vagrant snapshot pop
 ```
 Using snapshots
 ```
-vagrant snapshot restore jenkins-master push_1550202349_644
-vagrant snapshot restore jenkins-slave1 push_1550202353_5681
-vagrant snapshot restore jenkins-slave2 push_1550202357_5914
-vagrant snapshot restore support-tools push_1550202361_1089
-vagrant snapshot restore nexus push_1550202364_6344
-vagrant snapshot restore sonarqube push_1550979580_6377
+vagrant snapshot restore jenkins-master push_1551722508_4859
+vagrant snapshot restore jenkins-slave1 push_1551722512_3637
+vagrant snapshot restore jenkins-slave2 push_1551722516_4328
+vagrant snapshot restore support-tools push_1551722520_8112
+vagrant snapshot restore nexus push_1551722524_772
+vagrant snapshot restore sonarqube push_1551722528_8575
+```
+
+#### Usando docsify
+```
+docsify ./docs //cria um template
+docsify serve ./docs //inicia um server local
 ```
