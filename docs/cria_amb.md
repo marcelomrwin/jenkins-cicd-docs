@@ -124,6 +124,12 @@ Por fim deve-se garantir que todos os pacotes estejam devidamente atualizados. I
 
 **Se os nomes sugeridos forem alterados é necessário que todos os arquivos de hosts e playbooks reflitam estas alterações.**
 
+Com as máquinas provisionadas executar primeiro o playbook ansible/playbook-root.yml utilizando como arquivo de inventário o ansible/hosts-root.
+
+```
+ansible-playbook -i hosts-root playbook-root.yml -vv
+```
+
 ### Procedendo com a criação do ambiente
 
 ```
