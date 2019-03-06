@@ -18,3 +18,24 @@ No formulário informe os seguintes dados:
 Clique em **Salvar**
 
 _O usuário acima deve corresponder a usuário presente na base AD/LDAP_
+
+### Inserindo credenciais do GitHub / GitLab
+
+Para inserir credenciais de acesso a repositórios GIT como GitHub ou GitLab primeiramente é necessário a geração de tokens de acesso.
+
+Existem excelentes guias para geração de tokens de acesso;
+- GitHub
+  - [tutorial I](https://help.github.com/en/articles/authorizing-a-personal-access-token-for-use-with-a-saml-single-sign-on-organization)
+  - [tutorial II](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line)
+- GitLab
+  - [tutorial](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
+
+- No jenkins selecione **Credentials &rarr; System &rarr; Global credentials (unrestricted)**
+- Clique em **Add Credentials**
+![](/images/fig64-jenkins-credentials.png)
+  - selecione o Kind: _Secret text_
+  - scope: _Global..._
+  - Em Secret informe a chave gerada pelo repositório Git.
+  - Informe um ID
+  - Adicione uma descrição clara
+  - Clique em **OK**
