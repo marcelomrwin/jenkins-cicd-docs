@@ -61,6 +61,12 @@ O comando `vagrant up` criará um ambiente conforme segue:
     - Local Network 192.168.56.160
     - NAT
 
+#### 2.1 Instalação do VirtualBox Guest Additions
+Caso deseje instalar o plugin do virtualbox execute o comando
+```
+vagrant plugin install vagrant-vbguest
+```
+
 ### Criar o ambiente sem Vagrant
 
 Caso deseje provisionar o ambiente sem o uso do vagrant a seguinte infraestrutura deve ser provisionada.
