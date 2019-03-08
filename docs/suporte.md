@@ -1,12 +1,19 @@
 ### Instalação das seguintes ferramentas de suporte
 - Servidor Git - GOGS
 - Servidor SVN - Subversion
-- Servidor LDAP
+- Servidor LDAP - OpenLDAP
 - Servidor NFS
+- Servidor Docker
 
 ### Instalar a Role do NFS
 ```
 ansible-galaxy install geerlingguy.nfs
+```
+
+### Instalar a Role do Docker
+```
+ansible-galaxy install geerlingguy.docker
+ansible-galaxy install geerlingguy.pip
 ```
 
 ### Executar o seguinte playbook do ansible
@@ -22,6 +29,7 @@ As seguintes URLs estarão disponíveis:
 Os seguintes serviços estarão disponíveis:
 - NFS server
 - LDAP Server
+- Docker API Service
 
 ### Configuração do GOGS
 ![](/images/fig38-gogs.png)
@@ -65,3 +73,31 @@ Clique em **Add New Source**
 
 ![](/images/fig41-gogs.png)
 * clique em entrar e informe o usuário e senha criados acima.
+
+### Acessar a API remota do Docker
+A API remota do docker está acessível através da URL http://192.168.56.140:4243
+
+Um exemplo de como obter as imagens no repositório remoto:
+```
+curl -X GET http://192.168.56.140:4243/images/json
+```
+
+### Configurando o Jenkins para acessar a API do Docker
+- Acesse **Gerenciar Jenkins &rarr; Configurar o sistema**
+- Navegue até a área de Nuvem (Cloud)
+
+![](/images/fig67-docker.png)
+- Clique em **Adicionar uma nova nuvem &rarr; Docker**
+- Clique em **Docker Cloud details...**
+
+Preencha o formulário com as informações
+![](/images/fig68-docker.png)
+  - **Name:** _docker_
+  - **Docker Host URI:** _tcp://192.168.56.140:4243_
+  - utilize o botão **Test Connection** para garantir que o jenkins consegue comunicação com o servidor Docker
+  - **Enabled:** Deixar marcado
+  - Clique em **Salvar**
+
+
+docker pull maven:3.5-jdk-8
+adduser jenkins
