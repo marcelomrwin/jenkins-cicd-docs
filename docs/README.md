@@ -16,6 +16,7 @@
 - [Configuração do ambiente](/configurar_amb_I.md)
 - [Configuração do ambiente cont.](/configurar_amb_II.md)
 - [Instalação das ferramentas de suporte](/suporte.md)
+- [Configuração do Backup do Jenkins](/configurar_amb_III.md)
 - [Configurar LDAP no Jenkins](/config_ldap_jenkins.md)
 - [Configurar credenciais no Jenkins](/jenkins_credentials.md)
 - [Instalação e configuração do Nexus](/nexus.md)

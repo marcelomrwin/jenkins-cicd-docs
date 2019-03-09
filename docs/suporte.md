@@ -23,8 +23,8 @@ ansible-playbook -i hosts playbook.yml -vv
 ```
 
 As seguintes URLs estarão disponíveis:
-- https://192.168.56.140 - GOGS
-- https://192.168.56.140:81/svn/reposvn - Subversion
+- https://10.1.124.131 - GOGS
+- https://10.1.124.131:81/svn/reposvn - Subversion
 
 Os seguintes serviços estarão disponíveis:
 - NFS server
@@ -38,7 +38,7 @@ Os seguintes serviços estarão disponíveis:
   - **senha**: gogs
   - **Nome do banco**: gogs
 ![](/images/fig39-gogs.png)
-* **URL do aplication** inserir `https://192.168.56.140/`
+* **URL do aplication** inserir `https://10.1.124.131/`
 * Clique em **Instalar Gogs**
 
 ![](/images/fig40-gogs.png)
@@ -56,7 +56,7 @@ Clique em **Registrar** e preencha o formulário
 ### Configurar LDAP no Gogs. Preencha o formulário com as informações:
   - **Authentication Type**: LDAP (simple auth)
   - **Security Protocol**: Unecrypted
-  - **Host**: 192.168.56.140
+  - **Host**: 10.1.124.131
   - **Port**: 389
   - **User DN**: `uid=%s,ou=Users,dc=cicd,dc=local`
   - **User Filter**: `(&(objectClass=posixAccount)(uid=%s))`
@@ -75,11 +75,11 @@ Clique em **Add New Source**
 * clique em entrar e informe o usuário e senha criados acima.
 
 ### Acessar a API remota do Docker
-A API remota do docker está acessível através da URL http://192.168.56.140:4243
+A API remota do docker está acessível através da URL http://10.1.124.131:4243
 
 Um exemplo de como obter as imagens no repositório remoto:
 ```
-curl -X GET http://192.168.56.140:4243/images/json
+curl -X GET http://10.1.124.131:4243/images/json
 ```
 
 ### Configurando o Jenkins para acessar a API do Docker
@@ -93,7 +93,7 @@ curl -X GET http://192.168.56.140:4243/images/json
 Preencha o formulário com as informações
 ![](/images/fig68-docker.png)
   - **Name:** _docker_
-  - **Docker Host URI:** _tcp://192.168.56.140:4243_
+  - **Docker Host URI:** _tcp://10.1.124.131:4243_
   - utilize o botão **Test Connection** para garantir que o jenkins consegue comunicação com o servidor Docker
   - **Enabled:** Deixar marcado
   - Clique em **Salvar**

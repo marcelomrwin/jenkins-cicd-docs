@@ -1,6 +1,6 @@
 #### Generate jenkins plugin list
 
-https://192.168.56.110/script
+https://10.1.124.128/script
 ```
 Jenkins.instance.pluginManager.plugins.each{
   plugin ->
@@ -27,6 +27,12 @@ openssl req –new –key ca.key –out ca.csr
 ```
 Openssl x509 –req –days 365 –in ca.csr –signkey ca.key –out ca.crt
 ```
+
+### Para ignorar a geração de arquivos .retry no ansible utilizar
+```
+ANSIBLE_RETRY_FILES_ENABLED=0 ansible-playbook ...
+```
+
 
 #### [Jenkins Best Practices](https://wiki.jenkins.io/display/JENKINS/Jenkins+Best+Practices)
 - Always secure Jenkins

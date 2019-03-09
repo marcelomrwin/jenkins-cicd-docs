@@ -27,11 +27,11 @@ O conteúdo final da tarefa será:
 
 Acesse a pasta [nexus](../ansible/nexus) e execute:
 ```
-ansible-playbook -i hosts --ask-vault-pass --extra-vars '@passwd.yml' playbook.yml
+ansible-playbook -i hosts-vmware --ask-vault-pass --extra-vars '@passwd.yml' playbook.yml -vv
 ```
 Quando solicitado digite a senha do vault: `password`
 
-Após estes passos o nexus será provisionado na URL https://192.168.56.150. O usuário administrativo padrão é `admin` e a senha `admin123`.
+Após estes passos o nexus será provisionado na URL https://10.1.124.132. O usuário administrativo padrão é `admin` e a senha `admin123`.
 Existe também o usuário `jenkins` com a senha `password`.
 
 ### Configuração do LDAP no Nexus
@@ -48,7 +48,7 @@ Existe também o usuário `jenkins` com a senha `password`.
 
 - Na aba *Connection* preencha o formulário com os dados:
   - **Name**: CICD LDAP
-  - **LDAP server address**: ldap - 192.168.56.140 - 389
+  - **LDAP server address**: ldap - 10.1.124.131 - 389
   - **Search base**: dc=cicd,dc=local
   - **Authentication method**: Simple Authentication
   - **Username or DN**: cn=ldapadm,dc=cicd,dc=local

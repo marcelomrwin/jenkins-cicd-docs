@@ -43,7 +43,7 @@ No campo **Content** preencha com o conteúdo abaixo:
 
         <repository>
           <id>company-project</id>
-          <url>https://192.168.56.150/repository/company-project/</url>
+          <url>https://10.1.124.132/repository/company-project/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
@@ -54,7 +54,7 @@ No campo **Content** preencha com o conteúdo abaixo:
 
           <repository>
           <id>nexus-release</id>
-             <url>https://192.168.56.150/repository/maven-releases/</url>
+             <url>https://10.1.124.132/repository/maven-releases/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
@@ -65,7 +65,7 @@ No campo **Content** preencha com o conteúdo abaixo:
 
         <repository>
           <id>nexus-snapshot</id>
-          <url>https://192.168.56.150/repository/maven-snapshots/</url>
+          <url>https://10.1.124.132/repository/maven-snapshots/</url>
           <releases>
             <enabled>false</enabled>
           </releases>
@@ -76,7 +76,7 @@ No campo **Content** preencha com o conteúdo abaixo:
 
         <repository>
           <id>public</id>
-             <url>https://192.168.56.150/repository/public/</url>
+             <url>https://10.1.124.132/repository/public/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
@@ -89,7 +89,7 @@ No campo **Content** preencha com o conteúdo abaixo:
       <pluginRepositories>
         <pluginRepository>
           <id>nexus-release</id>
-          <url>https://192.168.56.150/repository/maven-releases/</url>
+          <url>https://10.1.124.132/repository/maven-releases/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
@@ -99,7 +99,7 @@ No campo **Content** preencha com o conteúdo abaixo:
         </pluginRepository>
         <pluginRepository>
           <id>nexus-snapshot</id>
-           <url>https://192.168.56.150/repository/maven-snapshots/</url>
+           <url>https://10.1.124.132/repository/maven-snapshots/</url>
           <releases>
             <enabled>false</enabled>
           </releases>
@@ -109,7 +109,7 @@ No campo **Content** preencha com o conteúdo abaixo:
         </pluginRepository>
         <pluginRepository>
           <id>public</id>
-           <url>https://192.168.56.150/repository/public/</url>
+           <url>https://10.1.124.132/repository/public/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
@@ -152,7 +152,7 @@ No campo **Content** preencha com o conteúdo abaixo:
     <mirror>
       <id>public</id>
       <name>public</name>
-      <url>https://192.168.56.150/repository/public/</url>
+      <url>https://10.1.124.132/repository/public/</url>
       <mirrorOf>*</mirrorOf>
     </mirror>
   </mirrors>
