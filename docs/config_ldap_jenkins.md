@@ -1,8 +1,10 @@
+### Configurar LDAP no Jenkins {docsify-ignore}
 - Acesse a opção -> **Gerenciar Jenkins** -> **Configurar segurança global**
 - Em **Domínio (realm) de segurança** selecione **LDAP**
 ![](/images/fig42-ldap.png)
 - Preencha o formulário com os valores:
-  - **Server**: *ldap://192.168.56.140:389*
+  - **Server**: *ldap://10.1.124.131:389*
+  - Clique em **Advanced Server Configuration...**
   - **User search base**: *ou=Users,dc=cicd,dc=local*
   - **User search filter**: *uid={0}*
   - **Group search base**: *ou=Groups,dc=cicd,dc=local*
@@ -23,6 +25,8 @@
 
   - **name:** com.sun.jndi.ldap.read.timeout
   - **value:** 10000
+
+- Clique em **Salvar**
 
 ### Configurar a matriz de segurança do Jenkins para utilizar LDAP
 

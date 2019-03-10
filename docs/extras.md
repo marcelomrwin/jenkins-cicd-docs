@@ -1,4 +1,4 @@
-#### Generate jenkins plugin list
+### Generate jenkins plugin list
 
 https://10.1.124.128/script
 ```
@@ -8,12 +8,12 @@ Jenkins.instance.pluginManager.plugins.each{
 }
 ```
 
-#### Para gerar o password das contas utilizar
+### Para gerar o password das contas utilizar
 ```
 mkpasswd --method=sha-512
 ```
 
-#### Gerar certificados para o Apache
+### Gerar certificados para o Apache
 
 **Step 1: Generate Private Key**
 ```
@@ -25,7 +25,7 @@ openssl req –new –key ca.key –out ca.csr
 ```
 **Step 3: Generate the Self Signed Certificate**
 ```
-Openssl x509 –req –days 365 –in ca.csr –signkey ca.key –out ca.crt
+openssl x509 –req –days 365 –in ca.csr –signkey ca.key –out ca.crt
 ```
 
 ### Para ignorar a geração de arquivos .retry no ansible utilizar
@@ -34,7 +34,7 @@ ANSIBLE_RETRY_FILES_ENABLED=0 ansible-playbook ...
 ```
 
 
-#### [Jenkins Best Practices](https://wiki.jenkins.io/display/JENKINS/Jenkins+Best+Practices)
+### [Jenkins Best Practices](https://wiki.jenkins.io/display/JENKINS/Jenkins+Best+Practices)
 - Always secure Jenkins
 - In larger systems, don't build on the master
 - Backup Jenkins Home regularly
@@ -54,7 +54,7 @@ ANSIBLE_RETRY_FILES_ENABLED=0 ansible-playbook ...
 - Write jobs for your maintenance tasks, such as cleanup operations to avoid full disk problems.
 - Tag, label, or baseline the codebase after the successful build
 
-#### Vagrant operations
+### Vagrant operations
 ```
 vagrant up
 vagrant halt
@@ -74,8 +74,64 @@ vagrant snapshot restore nexus push_1551722524_772
 vagrant snapshot restore sonarqube push_1551722528_8575
 ```
 
-#### Usando docsify
+### Usando docsify
 ```
 docsify ./docs //cria um template
 docsify serve ./docs //inicia um server local
+```
+
+### Operando vmware fusion REST
+
+#### Cria credenciais de acesso
+```bash
+vmrest -C
+```
+
+#### Infome usuário e senha
+```
+Username:
+New password:
+```
+#### Inicia um serviço REST local
+```
+vmrest
+```
+O comando acima irá retornar uma URL, por exemplo:
+```
+VMware Fusion REST API
+Copyright (C) 2015-2018 VMware Inc.
+All Rights Reserved
+
+vmrest 1.2.0 build-10952296
+-
+Using the VMware Fusion UI while API calls are in progress is not recommended and may yield unexpected results.
+-
+Serving HTTP on 127.0.0.1:8697
+-
+Press Ctrl+C to stop.
+```
+Acesse a página http://localhost:8697 (conforme URL acima)
+
+Na página retornada no canto superior direito clique em **Authorization**
+Informe o usuário e senha criado no passo `vmrest -C`.
+
+![](/images/fig69-extra.png)
+- Uma imagem similar será exibida permitindo consumir os serviços via REST API.
+
+#### Keytool ops
+##### list
+```
+keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit
+```
+##### get cert
+```
+keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit -alias 10.1.124.132
+```
+##### import new ca
+```
+keytool -import -trustcacerts -file ca.crt -alias 10.1.124.132 -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit
+```
+##### delete ca
+```
+keytool -delete -alias 10.1.124.131 -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit
 ```

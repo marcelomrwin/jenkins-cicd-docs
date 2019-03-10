@@ -11,14 +11,14 @@
   - clique **OK**
 ![](images/fig21-new-node.png)
 ### 25. Preencha o formulário com as informações abaixo:
-  - **Nome** jenkins-slave1
+  - **Nome** jenkins-node1
   - **Descrição** Maven Jenkins Node 1
   - **Número de executores** 2
   - **Diretório remoto** /home/jenkins
-  - **Rótulos** maven slave1
+  - **Rótulos** maven node1
   - **Uso** Use this node as much as possible
   - **Método de lançamento** Launch agent agents via SSH
-    - **_Host_** 192.168.56.120
+    - **_Host_** 10.1.124.129
     - **_Host Key Verification Strategy_** Non verifying Verification Strategy
   - **Disponibilidade** Keep this agent online as much as possible
 
@@ -39,16 +39,16 @@
 ### 28. De volta a janela anterior selecione a credential criada.
 ### 29. Clique em **Salvar**
 ![](images/fig25-new-node.png)
-### 30. Selecione o novo nó criado clicando sobre **jenkins-slave1**
-  - Se o jenkins não realizar a conexão com o servidor clique no botão **Relaunch agent** para estabelecer a conexão entre o master e o slave.
-### 31. Repetir os passos [21-30] para inserir o nó *jenkins-slave2*
-  - Alterar referências de nomes de slave1 para slave2. Onde se lê jenkins-slave1 deve ser alterado para jenkins-slave2.
-  - Utilizar o ip do Host 192.168.56.130
+### 30. Selecione o novo nó criado clicando sobre **jenkins-node1**
+  - Se o jenkins não realizar a conexão com o servidor clique no botão **Relaunch agent** para estabelecer a conexão entre o master e o node.
+### 31. Repetir os passos [21-30] para inserir o nó *jenkins-node2*
+  - Alterar referências de nomes de node1 para node2. Onde se lê jenkins-node1 deve ser alterado para jenkins-node2.
+  - Utilizar o ip do Host 10.1.124.130
   - Credenciais utilizar jenkins
 ![](images/fig26-new-node.png)
 
 ![](images/fig27-new-node.png)
-### 32. Clique no link **jenkins-slave2**
+### 32. Clique no link **jenkins-node2**
 Caso seja necessário clique em **Relaunch agent**
 ![](images/fig28-new-node.png)
 ### 33. Na lista de Nós clique no **master**
@@ -73,7 +73,7 @@ Caso seja necessário clique em **Relaunch agent**
 ### Configure conforme abaixo:
   - desmarque o campo **Instalar automaticamente**
   - no campo **Nome** informe `JDK_1.8`
-  - no campo **JAVA_HOME** informe `/usr/lib/jvm/java-openjdk`
+  - no campo **JAVA_HOME** informe `/usr/lib/jvm/java-1.8.0-openjdk/`
   - ![](images/fig34-global.png)
 
 ![](images/fig35-global.png)

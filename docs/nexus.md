@@ -7,23 +7,12 @@ ansible-galaxy install ansiblebit.oracle-java
 ansible-galaxy install ansible-thoteam.nexus3-oss
 ```
 
-O playbook ansible-nexus necessita de uma alteração antes de ser executado. Para isto edite o arquivo `~/.ansible/roles/ansible-thoteam.nexus3-oss/tasks/nexus_install.yml`
-Na linha 419 edite a tarefa **Archive Scripts** adicionando o conteúdo <br/>
-`vars:
-   ansible_become: no
-`<br/>
-O conteúdo final da tarefa será:
-```yaml
-- name: Archive scripts
-  local_action:
-    module: archive
-    path: "{{ role_path }}/files/groovy/*"
-    dest: "/tmp/nexus-upload-groovy-scripts.tar.gz"
-  vars:
-     ansible_become: no
-  run_once: true
-```
-*Observação: Este procedimento é necessário devido a um BUG no playbook de donfiguração. Um request será endereçado para o playbook original para evitar estes passos em futuras versões do playbook.*
+**Certifique-se de utilizar a versão mínima recomendada:**
+- geerlingguy.apache, 3.0.3
+- ansiblebit.oracle-java, 6.22.8
+- ansible-thoteam.nexus3-oss, v2.4.1
+
+**Observação: Antes de executar o playbook garanta que os certificados estão válidos para o endereço final do nexus. Se desejar gerar novos certificados consultar a sessão extra. Caso possua certificados válidos basta substituir os certificados padrão. ca.crt, ca.csr e ca.key**
 
 Acesse a pasta [nexus](../ansible/nexus) e execute:
 ```
@@ -32,7 +21,9 @@ ansible-playbook -i hosts-vmware --ask-vault-pass --extra-vars '@passwd.yml' pla
 Quando solicitado digite a senha do vault: `password`
 
 Após estes passos o nexus será provisionado na URL https://10.1.124.132. O usuário administrativo padrão é `admin` e a senha `admin123`.
-Existe também o usuário `jenkins` com a senha `password`.
+Existe também o usuário `jenkins` com a senha `password`, este usuário está configurado no LDAP.
+
+_Os passos abaixo servem apenas para verificação, o playbook do ansible já realiza todas estas configurações automaticamente._
 
 ### Configuração do LDAP no Nexus
 ![](/images/fig50-nexus-ldap.png)

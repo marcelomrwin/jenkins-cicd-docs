@@ -1,4 +1,4 @@
-Após a finalização da criação do ambiente acessar a URL https://192.168.56.110
+Após a finalização da criação do ambiente acessar a URL https://10.1.124.128
 
 ![Alt](images/fig01-ssl-error.png "Erro SSL")
 
@@ -8,13 +8,13 @@ Após a finalização da criação do ambiente acessar a URL https://192.168.56.
 
 ![Alt](images/fig02-ssl-error.png "Erro SSL")
 
-### 4. Clique em <b>Ir para 192.168.56.110 (não seguro)</b>
+### 4. Clique em <b>Ir para 10.1.124.128 (não seguro)</b>
 ### 5. Recupere a senha definida inicialmente durante a instalação. Existem duas maneiras de recuperar esta senha inicial:
   - No diretório raiz da execução do ansible na pasta buffer ler o conteúdo do arquivo jenkins-master-initialAdminPassword `cat buffer/jenkins-master-initialAdminPassword`
 
   - Recuperar diretamente do jenkins-master
 ```
-ssh root@192.168.56.110 cat /var/lib/jenkins/secrets/initialAdminPassword
+ssh root@10.1.124.128 cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 O retorno deve ser um valor como: <b>da4f06f440e04cf7935a670cb9635759</b> utilize este valor no campo Administrator password.
 ![Alt](images/fig03-initial-passwd.png "Unlock")
@@ -27,16 +27,16 @@ Aguarde a instalação finalizar para prosseguir
 ### 8. Preencha o formulário acima com informações relativas ao primeiro usuário a ser criado. <i>Este usuário terá privilégios administrativos</i>
 ### 9. Clique em <b>Save and Continue</b>
 ![Alt](images/fig07-instance.png "Instance config")
-### 10. Informe o valor `https://192.168.56.110` no campo <b>Jenkins URL</b>
+### 10. Informe o valor `https://10.1.124.128` no campo <b>Jenkins URL</b>
 ### 11. Cliquem em <b>Save and Finish</b>
 ![Alt](images/fig08-start-jenkins.png "Start Jenkins")
 ### 12. Clique em <b>Start using Jenkins</b>
 ![Start Jenkins](images/fig09-login.png)
 
-  - *Em alguns casos o navegador o navegador pode guardar um cache da URL e a tela pode "congelar". Caso isto ocorra digite na URL https://192.168.56.110/login?from=%2F*
+  - *Em alguns casos o navegador o navegador pode guardar um cache da URL e a tela pode "congelar". Caso isto ocorra digite na URL https://10.1.124.128/login?from=%2F*
   - *Pode haver situação que após a configuração do primeiro usuário o Jenkins entre em loop e não permita o login. Para contornar este BUG execute o reinicio do jenkins.*
   ```
-  ssh root@192.168.56.110 systemctl restart jenkins
+  ssh root@10.1.124.128 systemctl restart jenkins
   ```
 
 ### 13. Informe o usuário e senha criados no passo 8
@@ -55,11 +55,12 @@ Aguarde a instalação finalizar para prosseguir
 ### 18. Clique em **Configuration as Code**
 ![](images/fig15-gerenciar.png)
 ### 19. Informe o valor `file:////opt/jenkins.yaml` no campo **Path or URL**
+  - `file:////opt/jenkins.yaml`
   - Clique em **Apply new configuration**
   - Aguarde a finalização da instalação
   - Se desejar é possível acompanhar os logs no servidor realizando os seguintes passos:
     ```
-    ssh root@192.168.56.110 tail -f /var/log/jenkins/jenkins.log
+    ssh root@10.1.124.128 tail -f /var/log/jenkins/jenkins.log
     ```
       *ctrl + c para interromper*
   - Se durante a instalação uma janela similar abaixo aparecer ![](images/fig16-error.png) clique no link **Jenkins** no canto superior esquerdo. Em seguida clique em **Gerenciar Jenkins**
@@ -74,5 +75,5 @@ Aguarde a instalação finalizar para prosseguir
     - Certifique-se de marcar o checkbox para que o Jenkins reinicie tão logo finalize a instalação dos plugins.
 ### 20. Reinicie o Jenkins para finalizar a atualização e implantação das novas configurações.
 ```
-ssh root@192.168.56.110 systemctl restart jenkins
+ssh root@10.1.124.128 systemctl restart jenkins
 ```

@@ -19,7 +19,7 @@ ansible-galaxy install geerlingguy.pip
 ### Executar o seguinte playbook do ansible
 ```
 cd ansible/tools
-ansible-playbook -i hosts playbook.yml -vv
+ansible-playbook -i hosts-vmware playbook.yml -vv
 ```
 
 As seguintes URLs estarão disponíveis:
@@ -48,8 +48,14 @@ Clique em **Registrar** e preencha o formulário
   - **Senha**: gogs
   - **Digite novamente**: gogs
 
-![](/images/fig63-ldap-gogs.png)
+*Caso deseje utilize as informações que desejar para criar o usuário, tome nota do usuário e da senha escolhida*
+
+![](/images/fig41-gogs.png)
+* clique em entrar e informe o usuário e senha criados acima.
+
 ### Acessar menu de configuração
+![](/images/fig63-ldap-gogs.png)
+
 - No canto superior direito, acessar o menu e selecionar ***Painel do administrador***
 
 ![](/images/fig44-ldap-gogs.png)
@@ -68,36 +74,7 @@ Clique em **Registrar** e preencha o formulário
 
 Clique em **Add New Source**
 
-
-*Caso deseje utilize as informações que desejar para criar o usuário, tome nota do usuário e da senha escolhida*
-
-![](/images/fig41-gogs.png)
-* clique em entrar e informe o usuário e senha criados acima.
-
-### Acessar a API remota do Docker
-A API remota do docker está acessível através da URL http://10.1.124.131:4243
-
-Um exemplo de como obter as imagens no repositório remoto:
+### Instalar e configurar NFS no Jenkins Master
 ```
-curl -X GET http://10.1.124.131:4243/images/json
+ansible-playbook -i hosts-vmware playbook-nfs.yml -vv
 ```
-
-### Configurando o Jenkins para acessar a API do Docker
-- Acesse **Gerenciar Jenkins &rarr; Configurar o sistema**
-- Navegue até a área de Nuvem (Cloud)
-
-![](/images/fig67-docker.png)
-- Clique em **Adicionar uma nova nuvem &rarr; Docker**
-- Clique em **Docker Cloud details...**
-
-Preencha o formulário com as informações
-![](/images/fig68-docker.png)
-  - **Name:** _docker_
-  - **Docker Host URI:** _tcp://10.1.124.131:4243_
-  - utilize o botão **Test Connection** para garantir que o jenkins consegue comunicação com o servidor Docker
-  - **Enabled:** Deixar marcado
-  - Clique em **Salvar**
-
-
-docker pull maven:3.5-jdk-8
-adduser jenkins

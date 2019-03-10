@@ -15,10 +15,11 @@ No formulário preencha com os seguintes dados:
 - **ID**: maven-settings
 - **Name**: Nexus Config
 - **Comment**: user settings
-- **Server Credentials** cadastre três repositórios:
+- **Server Credentials** cadastre quatro repositórios:
   - company-project
   - nexus-release
   - nexus-snapshot
+  - public
 
 Para todos selecione a Credentials **Jenkins LDAP**
 

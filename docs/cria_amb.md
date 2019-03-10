@@ -251,9 +251,11 @@ ansible-playbook -i hosts-root playbook-root.yml -vv
 
 ### Procedendo com a criação do ambiente
 
+**Antes de executar o playbook abaixo verifique o certificado nexus/ca.crt. Este certificado foi gerado para o ip 10.1.124.132, caso possua outro certificado ou tenha alterado o ip este certificado deve ser gerado novamente**
+
 ```
 cd ansible
-ansible-playbook -i hosts playbook.yml -vv
+ansible-playbook -i hosts-vmware playbook.yml -vv
 ```
 <i><b>observação:</b>
   - As máquinas configuradas em [hosts](ansible/hosts) devem estar devidamente configuradas
