@@ -56,7 +56,7 @@ O comando `vagrant up` criará um ambiente conforme segue:
 - VM <b>sonarqube</b>
   - Centos 7
   - 2 CPUs
-  - 3Gb RAM
+  - 4Gb RAM
   - 2 NICs
     - Local Network 192.168.56.160
     - NAT

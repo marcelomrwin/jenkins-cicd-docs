@@ -127,3 +127,21 @@ Na lista de repositórios selecione o **public**
 ![](/images/fig62-nexus.png)
 Mova para a coluna **Members** todos os repositórios presentes na coluna **Available**
 Clique em **Save**
+
+### Configurando o Jenkins para acesso ao Nexus
+![](/images/fig75-nexus-jenkins.png)</br>
+- Acesse **Gerenciar Jenkins &rarr; Configurar o Sistema**
+- Navegue até a sessão **Sonatype Nexus**
+- Clique em **Add Nexus Repository Manager Server**
+- Selecione **Nexus Repository Manager 3.x Server**
+
+![](/images/fig76-nexus-jenkins.png)</br>
+Preencha o formulário com os dados abaixo:
+- **Display Name:** Nexus
+- **Server ID:** nexus
+- **Server URL:** https://10.1.124.132/
+- **Credentials:** Selecione Jenkins LDAP
+- clique em **Test connection** para assegurar que a comunicação com o servidor nexus está funcional.
+- clique em **Salvar**
+
+*Ignore a mensagem de advertência que solicita features da versão PRO do Sonatype Nexus*
