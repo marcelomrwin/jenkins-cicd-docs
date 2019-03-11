@@ -78,3 +78,10 @@ Clique em **Add New Source**
 ```
 ansible-playbook -i hosts-vmware playbook-nfs.yml -vv
 ```
+
+### Instalar certificados nos nodes do Jenkins
+Executar o playbook abaixo para inserir os certificados gerados nos nodes do jenkins
+```
+cd ansible
+ansible-playbook -i hosts-vmware playbook-tools-ssl.yml -vv
+```

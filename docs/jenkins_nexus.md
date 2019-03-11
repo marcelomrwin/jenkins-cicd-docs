@@ -27,12 +27,12 @@ Para todos selecione a Credentials **Jenkins LDAP**
 No campo **Content** preencha com o conteúdo abaixo:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
   <localRepository>${user.home}/.m2/repository</localRepository>
   <offline>false</offline>
+  <pluginGroups>
+    <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+  </pluginGroups>
   <profiles>
     <profile>
       <id>default-repository</id>
@@ -41,7 +41,6 @@ No campo **Content** preencha com o conteúdo abaixo:
         <downloadJavadocs>true</downloadJavadocs>
       </properties>
       <repositories>
-
         <repository>
           <id>company-project</id>
           <url>https://10.1.124.132/repository/company-project/</url>
@@ -52,18 +51,16 @@ No campo **Content** preencha com o conteúdo abaixo:
             <enabled>false</enabled>
           </snapshots>
         </repository>
-
-          <repository>
+        <repository>
           <id>nexus-release</id>
-             <url>https://10.1.124.132/repository/maven-releases/</url>
+          <url>https://10.1.124.132/repository/maven-releases/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
-          </repository>
-
+        </repository>
         <repository>
           <id>nexus-snapshot</id>
           <url>https://10.1.124.132/repository/maven-snapshots/</url>
@@ -74,19 +71,17 @@ No campo **Content** preencha com o conteúdo abaixo:
             <updatePolicy>always</updatePolicy>
           </snapshots>
         </repository>
-
         <repository>
           <id>public</id>
-             <url>https://10.1.124.132/repository/public/</url>
+          <url>https://10.1.124.132/repository/public/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
-          </repository>
+        </repository>
       </repositories>
-
       <pluginRepositories>
         <pluginRepository>
           <id>nexus-release</id>
@@ -100,7 +95,7 @@ No campo **Content** preencha com o conteúdo abaixo:
         </pluginRepository>
         <pluginRepository>
           <id>nexus-snapshot</id>
-           <url>https://10.1.124.132/repository/maven-snapshots/</url>
+          <url>https://10.1.124.132/repository/maven-snapshots/</url>
           <releases>
             <enabled>false</enabled>
           </releases>
@@ -110,7 +105,7 @@ No campo **Content** preencha com o conteúdo abaixo:
         </pluginRepository>
         <pluginRepository>
           <id>public</id>
-           <url>https://10.1.124.132/repository/public/</url>
+          <url>https://10.1.124.132/repository/public/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
@@ -120,8 +115,18 @@ No campo **Content** preencha com o conteúdo abaixo:
         </pluginRepository>
       </pluginRepositories>
     </profile>
+    <profile>
+      <id>sonar</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <sonar.host.url>http://10.1.124.133:9000</sonar.host.url>
+        <sonar.login>admin</sonar.login>
+        <sonar.password>admin</sonar.password>
+      </properties>
+    </profile>
   </profiles>
-
   <servers>
     <server>
       <id>company-project</id>
@@ -144,11 +149,9 @@ No campo **Content** preencha com o conteúdo abaixo:
       <password>password</password>
     </server>
   </servers>
-
   <activeProfiles>
     <activeProfile>default-repository</activeProfile>
   </activeProfiles>
-
   <mirrors>
     <mirror>
       <id>public</id>
@@ -157,7 +160,6 @@ No campo **Content** preencha com o conteúdo abaixo:
       <mirrorOf>*</mirrorOf>
     </mirror>
   </mirrors>
-
 </settings>
 ```
 
