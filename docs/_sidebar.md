@@ -2,7 +2,8 @@
 
   - [Início](/)
   - [Pré Requisitos](/pre_reqs.md)
-  - [Criação do Ambiente](/cria_amb.md)  
+  - [Criação do Ambiente](/cria_amb.md)
+  - [Criação do Ambiente Com Vagrant](/cria_amb_vagrant.md)
   - [Configuração do ambiente](/configurar_amb_I.md)
   - [Configuração do ambiente II](/configurar_amb_II.md)
   - [Instalação das ferramentas de suporte](/suporte.md)

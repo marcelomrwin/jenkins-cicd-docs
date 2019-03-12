@@ -14,7 +14,7 @@ Após a finalização da criação do ambiente acessar a URL https://10.1.124.12
 
   - Recuperar diretamente do jenkins-master
 ```
-ssh root@10.1.124.128 cat /var/lib/jenkins/secrets/initialAdminPassword
+ssh admin@10.1.124.128 cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 O retorno deve ser um valor como: <b>da4f06f440e04cf7935a670cb9635759</b> utilize este valor no campo Administrator password.
 ![Alt](images/fig03-initial-passwd.png "Unlock")
@@ -36,7 +36,7 @@ Aguarde a instalação finalizar para prosseguir
   - *Em alguns casos o navegador o navegador pode guardar um cache da URL e a tela pode "congelar". Caso isto ocorra digite na URL https://10.1.124.128/login?from=%2F*
   - *Pode haver situação que após a configuração do primeiro usuário o Jenkins entre em loop e não permita o login. Para contornar este BUG execute o reinicio do jenkins.*
   ```
-  ssh root@10.1.124.128 systemctl restart jenkins
+  ssh admin@10.1.124.128 systemctl restart jenkins
   ```
 
 ### 13. Informe o usuário e senha criados no passo 8
@@ -75,5 +75,5 @@ Aguarde a instalação finalizar para prosseguir
     - Certifique-se de marcar o checkbox para que o Jenkins reinicie tão logo finalize a instalação dos plugins.
 ### 20. Reinicie o Jenkins para finalizar a atualização e implantação das novas configurações.
 ```
-ssh root@10.1.124.128 systemctl restart jenkins
+ssh admin@10.1.124.128 systemctl restart jenkins
 ```

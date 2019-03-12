@@ -59,7 +59,9 @@ Clique em **Registrar** e preencha o formulário
 - No canto superior direito, acessar o menu e selecionar ***Painel do administrador***
 
 ![](/images/fig44-ldap-gogs.png)
-### Configurar LDAP no Gogs. Preencha o formulário com as informações:
+### Configurar LDAP no Gogs.
+
+Preencha o formulário com as informações:
   - **Authentication Type**: LDAP (simple auth)
   - **Security Protocol**: Unecrypted
   - **Host**: 10.1.124.131
