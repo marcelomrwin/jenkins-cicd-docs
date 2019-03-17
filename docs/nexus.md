@@ -16,6 +16,7 @@ ansible-galaxy install ansible-thoteam.nexus3-oss
 
 Acesse a pasta [nexus](../ansible/nexus) e execute:
 ```
+cd ansible/nexus
 ansible-playbook -i hosts-vmware --ask-vault-pass --extra-vars '@passwd.yml' playbook.yml -vv
 ```
 Quando solicitado digite a senha do vault: `password`
@@ -24,6 +25,7 @@ Após estes passos o nexus será provisionado na URL https://10.1.124.132. O usu
 Existe também o usuário `jenkins` com a senha `password`, este usuário está configurado no LDAP.
 
 _Os passos abaixo servem apenas para verificação, o playbook do ansible já realiza todas estas configurações automaticamente._
+<br/>Continua no passo [Configurando o Jenkins para acesso ao Nexus](#configurando-o-jenkins-para-acesso-ao-nexus)
 
 ### Configuração do LDAP no Nexus
 ![](/images/fig50-nexus-ldap.png)

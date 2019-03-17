@@ -39,6 +39,10 @@ Os seguintes serviços estarão disponíveis:
   - **Nome do banco**: gogs
 ![](/images/fig39-gogs.png)
 * **URL do aplication** inserir `https://10.1.124.131/`
+
+* Se desejar pode também criar a conta inicial selecionando **Configurações da conta de administrador**
+![](/images/fig78.png)
+
 * Clique em **Instalar Gogs**
 
 ![](/images/fig40-gogs.png)

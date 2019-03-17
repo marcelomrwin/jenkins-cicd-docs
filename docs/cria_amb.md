@@ -146,10 +146,12 @@ sonar_ip: 10.1.124.133
 
 Após ajustar o arquivo de variáveis e inventário executar o playbook conforme abaixo:
 ```
+cd ansible
 ansible-playbook -i hosts-root-vmware playbook-root.yml -vv
 ```
 OU
 ```
+cd ansible
 ansible-playbook -i hosts-root playbook-root.yml -vv
 ```
 
@@ -162,11 +164,17 @@ cd ansible
 ansible-playbook -i hosts-vmware playbook.yml -vv
 ```
 <i><b>observação:</b>
-  - As máquinas configuradas em [hosts](ansible/hosts) devem estar devidamente configuradas
+  - As máquinas configuradas em hosts-vmware devem estar devidamente configuradas
 </i>
-
-
 
 O ansible configurará as VMs e também instalará os pacotes necessários para o funcionamento do jenkins bem como as ferramentas:
 - JDK 1.8
 - Maven 3.5.4
+
+### Solução de problemas
+Caso durante a execução do playbook uma janela similar abaixo aparecer:
+![](/images/fig76.png)
+Force um novo reinício do servidor Jenkins
+```
+ssh root@10.1.124.128 systemctl restart jenkins
+```

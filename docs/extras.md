@@ -135,3 +135,7 @@ keytool -import -trustcacerts -file ca.crt -alias 10.1.124.132 -keystore $JAVA_H
 ```
 keytool -delete -alias 10.1.124.131 -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit
 ```
+### Acessando a API do SonarQube e buscando o resultado de uma análise
+```
+curl http://10.1.124.133:9000/api/qualitygates/project_status\?projectKey\=hello-world-greeting
+```

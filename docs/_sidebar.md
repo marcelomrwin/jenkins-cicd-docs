@@ -14,4 +14,6 @@
   - [Instalação e configuração do Nexus](/nexus.md)
   - [Configuração do Jenkins para<br/> acesso ao Nexus](/jenkins_nexus.md)
   - [Instalação e configuração do SonarQube](/sonarqube.md)
+  - [Configurar Bibliotecas do Pipeline](/groovy_libs.md)
+  - [Configurando uma aplicação de exemplo](/app_exemplo.md)
   - [Extras](/extras.md)

@@ -1,3 +1,8 @@
+Apesar de opcional é recomendado manter uma sessão aberta no servidor jenkins para observar os logs. Para isto execute o comando:
+  ```
+  ssh admin@10.1.124.128 tail -F /var/log/jenkins/jenkins.log
+  ```
+
 Após a finalização da criação do ambiente acessar a URL https://10.1.124.128
 
 ![Alt](images/fig01-ssl-error.png "Erro SSL")
@@ -10,9 +15,9 @@ Após a finalização da criação do ambiente acessar a URL https://10.1.124.12
 
 ### 4. Clique em <b>Ir para 10.1.124.128 (não seguro)</b>
 ### 5. Recupere a senha definida inicialmente durante a instalação. Existem duas maneiras de recuperar esta senha inicial:
-  - No diretório raiz da execução do ansible na pasta buffer ler o conteúdo do arquivo jenkins-master-initialAdminPassword `cat buffer/jenkins-master-initialAdminPassword`
+  1. No diretório raiz da execução do ansible na pasta buffer ler o conteúdo do arquivo jenkins-master-initialAdminPassword `cat buffer/jenkins-master-initialAdminPassword`
 
-  - Recuperar diretamente do jenkins-master
+  1. Recuperar diretamente do jenkins-master
 ```
 ssh admin@10.1.124.128 cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
@@ -23,6 +28,14 @@ O retorno deve ser um valor como: <b>da4f06f440e04cf7935a670cb9635759</b> utiliz
 ### 7. Clique em <b>Install suggested plugins</b>
 ![Alt](images/fig05-install.png "Install plugins")
 Aguarde a instalação finalizar para prosseguir
+
+### Resolução de problemas
+- 7.1 Caso durante a instalação dos plugins a seguinte
+![](/images/fig77.png)</br>
+Clique em **Continue**
+
+
+
 ![Alt](images/fig06-create-user.png "Create User")
 ### 8. Preencha o formulário acima com informações relativas ao primeiro usuário a ser criado. <i>Este usuário terá privilégios administrativos</i>
 ### 9. Clique em <b>Save and Continue</b>
@@ -57,7 +70,7 @@ Aguarde a instalação finalizar para prosseguir
 ### 19. Informe o valor `file:////opt/jenkins.yaml` no campo **Path or URL**
   - `file:////opt/jenkins.yaml`
   - Clique em **Apply new configuration**
-  - Aguarde a finalização da instalação
+  - Aguarde a finalização da instalação (**Este processo pode levar de 7 a 10 minutos**)
   - Se desejar é possível acompanhar os logs no servidor realizando os seguintes passos:
     ```
     ssh root@10.1.124.128 tail -f /var/log/jenkins/jenkins.log
@@ -77,3 +90,28 @@ Aguarde a instalação finalizar para prosseguir
 ```
 ssh admin@10.1.124.128 systemctl restart jenkins
 ```
+
+### Validar plugins instalados
+Certifique-se de que todos os plugins abaixo estejam devidamente instalados.
+- workflow-aggregator: '2.6'
+- gradle: '1.31'
+- blueocean: '1.13.2'
+- pipeline-maven: '3.6.7'
+- job-dsl: '1.72'
+- cloudbees-folder: '6.7'
+- disk-usage: '0.28'
+- view-job-filters: '2.1.1'
+- dashboard-view: '2.10'
+- gogs-webhook: '1.0.14'
+- generic-webhook-trigger: '1.52'
+- sonar: '2.8.1'
+- tasks: '4.53'
+- periodicbackup: '1.5'
+- docker-plugin: '1.1.6'
+- nexus-jenkins-plugin: '3.5.20190313-114450.3bfee7f'
+- nexus-artifact-uploader: '2.10'
+- pipeline-utility-steps: '2.3.0'
+- tasks: '4.53'
+- junit-attachments: '1.5'
+- warnings-ng: '4.0.0'
+- authorize-project: '1.3.0'

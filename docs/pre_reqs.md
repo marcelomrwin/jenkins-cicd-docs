@@ -43,6 +43,7 @@ ansible-playbook playbook-copy-id.yml -vv
 ```
 
 **Ficar atento ao password do usuário root do host, o ansible solicitará a digitação para cada host que ele configurar.**
+Digite a senha do usuário root sempre que solicitado.
 
 ### Execute o playbook para criação do usuário admin
 ```

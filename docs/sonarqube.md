@@ -22,9 +22,13 @@ Verique se está instalado a versão mínima recomendada.
 cd ansible
 cd sonarqube
 ansible-playbook -i hosts-vmware playbook.yml -vv
+ansible-playbook -i hosts-vmware playbook-nginx.yml -vv
 ```
+
+*Devido a quantidade de plugins que a instalação realiza é necessário baixar muitos arquivos e por este motivo pode levar de 10 a 15 minutos*
+
 ### Acessando o Sonarqube
-Após a instalação acesse https://10.1.124.133.
+Após a instalação acesse https://10.1.124.133 ou http://10.1.124.133:9000.
 
 
 ![](/images/fig70-sonarqube.png)</br>
@@ -52,3 +56,43 @@ No formulário informe os dados conforme segue:
 - **Server URL:** http://10.1.124.133:9000
 - **Server authentication token:** *Informe o token gerado pelo sonarqube acima*
 - Clique em **Salvar**
+
+### Configurando Webhook no SonarQube
+Acesse o SonarQube https://10.1.124.133 e clique em **Administration &rarr; Configuration &rarr; Webhooks**
+![](/images/fig87.png)</br>
+
+Clique em **Create** No canto superior direito
+![](/images/fig88.png)</br>
+
+No formulário informe os dados:
+- **Name:** jenkins
+- **URL:** http://10.1.124.128:8080/sonarqube-webhook
+- Clique em **Create**</br>
+![](/images/fig89.png)</br>
+
+### Ajustando permissões no SonarQube
+Acesse o SonarQube https://10.1.124.133 e clique em **Administration &rarr; Security &rarr; Global Permissions**
+Conceda permissão **Execute Analysis** ao usuário sonar-administrators</br>
+![](/images/fig90.png)</br>
+
+### Customizando um Quality Gate para a aplicação de exemplo
+Acesse o SonarQube https://10.1.124.133 e clique em **Quality Gates**
+- Clique em **Sonar way** e clique em **copy** no canto superior direito
+![](/images/fig94.png)</br>
+- Informe em name **Sonar Custom**
+- Clique em **Copy**
+
+Um novo Quality Gate será criado. Clique sobre o Quality Gate **Sonar Custom** no lado esquerdo.</br>
+Clique em Add Condition
+![](/images/fig95.png)</br>
+
+![](/images/fig96.png)</br>
+- **Metric:** Major Issues
+- **Operator:** is greater than
+- **Warning:** 10
+- **Error:** 30
+Clique em **Add Condition**
+
+![](/images/fig97.png)</br>
+Selecione o Quality Gate **Sonar Custom**</br>
+Clique em **Set as Default**
