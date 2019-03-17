@@ -1,4 +1,4 @@
-### Acessar a API remota do Docker (Opcional)
+### Acessar a API remota do Docker
 A API remota do docker está acessível através da URL http://10.1.124.131:4243
 
 Um exemplo de como obter as imagens no repositório remoto:
@@ -7,6 +7,9 @@ curl -X GET http://10.1.124.131:4243/images/json
 ```
 
 ### Configurando o Jenkins para acessar a API do Docker
+
+**Certifique-se de que o plugin docker-plugin está devidamente instalado**
+
 - Acesse **Gerenciar Jenkins &rarr; Configurar o sistema**
 - Navegue até a área de Nuvem (Cloud)
 
@@ -16,10 +19,11 @@ curl -X GET http://10.1.124.131:4243/images/json
 
 Preencha o formulário com as informações
 ![](/images/fig68-docker.png)
-  - **Name:** _docker_
-  - **Docker Host URI:** _tcp://10.1.124.131:4243_
+  - **Name:** _Default Docker Host_
+  - **Docker Host URI:** _tcp://10.1.124.131:4243/_
   - utilize o botão **Test Connection** para garantir que o jenkins consegue comunicação com o servidor Docker
   - **Enabled:** Deixar marcado
+  - **Expose DOCKER_HOST:** Deixar marcado
   - Clique em **Salvar**
 
 ### Configurando uma imagem docker padrão
@@ -29,29 +33,29 @@ ssh root@10.1.124.131
 ```
 _obs: Lembre-se de alterar o IP caso tenha modificado a configuração padrão_
 
-- Dentro do host faça o pull da imagem base que será utilizada para gerar artefatos java.
+- Dentro do host faça o pull e execute a imagem base que será utilizada para gerar artefatos java.
 ```
-docker pull maven:3.5-jdk-8
+docker run -it ubuntu /bin/bash
 ```
 - Verifique a imagem base foi baixada no repositório local
-```bash
-[root@support-tools ~]# docker images
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-maven               3.5-jdk-8           985f3637ded4        4 months ago        635MB
-```
 
-- Execute um container utilizando a imagem base.
-
-```
-docker run -it --name maven maven:3.5-jdk-8 /bin/bash
-```
 - Crie o usuário jenkins
 ```
 adduser jenkins
 ```
 - Informe os dados solicitados até a conclusão da criação do usuário.
 
-- Instale o editor de texto e o servidor SSH
+- Certifique-se de que consegue usar o usuário jenkins
+```
+su jenkins
+```
+- Volte para o usuário root
+```
+exit
+```
+
+
+- Instale alguns pacotes essenciais
 ```
 apt-get update
 apt -y install vim
@@ -62,40 +66,28 @@ mkdir /var/run/sshd
 ```
 apt-get install subversion -y
 ```
-- Edite o arquivo ~/.m2/settings-docker.xml
+- Instale o cliente git
 ```
-vi ~/.m2/settings-docker.xml
+apt-get install git -y
 ```
-- Remova todas as linhas do arquivo
-  - pressione :
-  - digite `:1,$d`
-  - tecle Enter
-- Insira o novo conteúdo do arquivo
-  - pressione A (Para entrar em modo de insert/append)
-- Copie o cole o seguinte conteúdo dentro do arquivo
+- Instale a java sdk 8
 ```
-<?xml version="1.0" encoding="UTF-8"?><settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd"><localRepository>${user.home}/.m2/repository</localRepository><offline>false</offline><profiles><profile><id>default-repository</id><properties><downloadSources>true</downloadSources><downloadJavadocs>true</downloadJavadocs></properties><repositories><repository><id>company-project</id><url>https://10.1.124.132/repository/company-project/</url><releases><updatePolicy>never</updatePolicy></releases><snapshots><enabled>false</enabled></snapshots></repository><repository><id>nexus-release</id><url>https://10.1.124.132/repository/maven-releases/</url><releases><updatePolicy>never</updatePolicy></releases><snapshots><enabled>false</enabled></snapshots></repository><repository><id>nexus-snapshot</id><url>https://10.1.124.132/repository/maven-snapshots/</url><releases><enabled>false</enabled></releases><snapshots><updatePolicy>always</updatePolicy></snapshots></repository><repository><id>public</id><url>https://10.1.124.132/repository/public/</url><releases><updatePolicy>never</updatePolicy></releases><snapshots><enabled>false</enabled></snapshots></repository></repositories><pluginRepositories><pluginRepository><id>nexus-release</id><url>https://10.1.124.132/repository/maven-releases/</url><releases><updatePolicy>never</updatePolicy></releases><snapshots><enabled>false</enabled></snapshots></pluginRepository><pluginRepository><id>nexus-snapshot</id><url>https://10.1.124.132/repository/maven-snapshots/</url><releases><enabled>false</enabled></releases><snapshots><updatePolicy>always</updatePolicy></snapshots></pluginRepository><pluginRepository><id>public</id><url>https://10.1.124.132/repository/public/</url><releases><updatePolicy>never</updatePolicy></releases><snapshots><enabled>false</enabled></snapshots></pluginRepository></pluginRepositories></profile></profiles><servers><server><id>company-project</id><username>jenkins</username><password>password</password></server><server><id>nexus-release</id><username>jenkins</username><password>password</password></server><server><id>nexus-snapshot</id><username>jenkins</username><password>password</password></server><server><id>public</id><username>jenkins</username><password>password</password></server></servers><activeProfiles><activeProfile>default-repository</activeProfile></activeProfiles><mirrors><mirror><id>public</id><name>public</name><url>https://10.1.124.132/repository/public/</url><mirrorOf>*</mirrorOf></mirror></mirrors></settings>
+apt-get install openjdk-8-jdk
 ```
-- Salve o arquivo
-  - pressione `esc`
-  - digite `:`
-  - digite `x`
-  - pressione enter
-
-- Crie a pasta .m2 para o usuário jenkins
+- Instale o Maven
 ```
-mkdir -p /home/jenkins/.m2
+apt-get install maven
 ```
-- Copie o arquivo para a pasta .m2 do usuário jenkins
+- Configure o Maven
 ```
-cp ~/.m2/settings-docker.xml /home/jenkins/.m2/settings-docker.xml
-cp ~/.m2/settings-docker.xml /home/jenkins/.m2/settings.xml
+cd /opt
+wget http://www-us.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
+tar -xf apache-maven-3.5.4-bin.tar.gz
+chown -R jenkins:jenkins /opt/apache-maven-3.5.4/
+chmod -R 777 /opt/apache-maven-3.5.4/
+rm -rf apache-maven-3.5.4-bin.tar.gz
 ```
 
-- Altere as permissões de acesso para o usuário jenkins
-```
-chown -R jenkins.jenkins /home/jenkins/.m2/
-```
 - Crie o arquivo de certificado do nexus na imagem docker
   - digite `vi ca.crt`
   - na janela do vi que abriu digite `A`
@@ -126,7 +118,7 @@ chown -R jenkins.jenkins /home/jenkins/.m2/
 
 - importe o arquivo ca.crt para o arquivo de segurança do java
 ```
-keytool -import -storepass changeit -noprompt -alias nexus -keystore $JAVA_HOME/jre/lib/security/cacerts -trustcacerts -file ca.crt
+keytool -import -storepass changeit -noprompt -alias nexus -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts -trustcacerts -file ca.crt
 ```
 - saia do container docker digitando `exit`
 - faça o commit da imagem customizada.
@@ -134,7 +126,7 @@ keytool -import -storepass changeit -noprompt -alias nexus -keystore $JAVA_HOME/
   ```
   [root@support-tools ~]# docker ps -a
   CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS               NAMES
-  a854c73fe8af        maven:3.5-jdk-8     "/usr/local/bin/mvn-…"   2 hours ago         Exited (0) 8 seconds ago                       maven
+  a854c73fe8af        ubuntu     "/bin/bash"   2 hours ago         Exited (0) 8 seconds ago                       maven
   ```
   - observe o valor do _CONTAINER ID_, utilizaremos este valor no comando abaixo.
   - execute o comando:
@@ -146,5 +138,24 @@ keytool -import -storepass changeit -noprompt -alias nexus -keystore $JAVA_HOME/
 [root@support-tools ~]# docker images
 REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
 maven-build-node-0.1   latest              33aa82fe6286        11 seconds ago      825MB
-maven                  3.5-jdk-8           985f3637ded4        4 months ago        635MB
+maven                  ubuntu           985f3637ded4        4 months ago        635MB
 ```
+
+### Configurando o template do Docker no Jenkins
+- Retorne ao Jenkins e acesse **Gerenciar Jenkins &rarr; Configurar Sistema**
+- Navegue até a área de **Nuvem &rarr; Docker**
+- Clique  em **Docker Agent templates**
+
+No formulário preencha com os dados:
+- **Labels:** docker-build
+- **Enabled:** Deixar marcado
+- **Name:** docker-node-build
+- **Docker Image:** maven-build-node-0.1
+- **Remote File System Root:** /home/jenkins
+- **Connect method:** Connect with SSH
+  - **SSH key:** Use configured SSH credentials
+    - **SSH Credentials:** Selecione _Jenkins LDAP_
+    - **Host Key Verification Strategy:** Non verifying Verification Strategy
+- **Pull strategy:** Never pull
+- Clique em **Salvar**
+![](/images/fig106.png)

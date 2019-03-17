@@ -2,15 +2,15 @@
 
 Para adicionar as bibliotecas compartilhadas de funcionalidades para o pipeline siga a orientação abaixo:
 - Faça o clone do projeto github
-  ```
+  ```bash
   git clone https://github.com/marcelomrwin/groovy_libs.git
   ```
 - Acesse a pasta do repositório
-  ```
+  ```bash
   cd groovy_libs
   ```
 - Remova as referências ao git e gere um novo compartilhamento
-  ```
+  ```bash
   rm -rf .git
   git init  
   ```
@@ -22,12 +22,12 @@ Para adicionar as bibliotecas compartilhadas de funcionalidades para o pipeline 
   - Clique em **Criar repositório**  
 
 - Configure o servidor remoto para o serviço GIT Local. No ambiente de homologação é um servidor GOGS
-  ```
+  ```bash
   git remote add origin https://10.1.124.131/jenkins/groovy_libs.git
   ```
   **No exemplo acima o endereço 10.1.124.131 corresponde ao IP do servidor onde o servidor GIT está em execução. Caso utilize um outro IP fazer o ajuste do endereço correto**
 - Edite o arquivo vars/getSonarQubeURL.groovy para refletir a URL do servidor SonarQube.
-  ```
+  ```groovy
   #!/usr/bin/env groovy
 
   def call() {
@@ -37,7 +37,7 @@ Para adicionar as bibliotecas compartilhadas de funcionalidades para o pipeline 
   Salve o arquivo com o novo conteúdo.
 
 - Submeta o código ao repositório local do git
-  ```
+  ```bash
   git add --all
   git commit -am 'first commit'
   git push -u origin master

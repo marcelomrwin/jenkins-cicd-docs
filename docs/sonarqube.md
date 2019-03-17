@@ -2,7 +2,7 @@
 
 ### Instalando as dependências:
 
-```
+```bash
 ansible-galaxy install lean_delivery.java
 ansible-galaxy install anxs.postgresql
 ansible-galaxy install jdauphant.ssl-certs

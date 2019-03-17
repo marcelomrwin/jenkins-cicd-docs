@@ -15,5 +15,6 @@
   - [Configuração do Jenkins para<br/> acesso ao Nexus](/jenkins_nexus.md)
   - [Instalação e configuração do SonarQube](/sonarqube.md)
   - [Configurar Bibliotecas do Pipeline](/groovy_libs.md)
+  - [Criando uma job simples de validação com Docker](/app_validar_docker.md)
   - [Configurando uma aplicação de exemplo](/app_exemplo.md)
   - [Extras](/extras.md)
