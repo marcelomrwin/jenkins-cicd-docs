@@ -30,9 +30,10 @@ ansible-playbook -i hosts-vmware playbook-nginx.yml -vv
 ### Acessando o Sonarqube
 Após a instalação acesse https://10.1.124.133 ou http://10.1.124.133:9000.
 
-
 ![](/images/fig70-sonarqube.png)</br>
 Faça login com o usuário administrativo, login e senha `admin`
+
+O SonarQube já está configurado para acessar o LDAP. Os usuários que fazem parte do grupo sonar-administrators no LDAP também são automaticamente administradores do SonarQube. O usuário jenkins faz parte do grupo. Caso queira poderá utilizar o usuário `jenkins` com a senha `password`.
 
 ### Gerando um token para uso no Jenkins
 ![](/images/fig71-sonarqube.png)</br>
