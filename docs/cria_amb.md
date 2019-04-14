@@ -1,6 +1,6 @@
-### Criar o ambiente sem Vagrant {docsify-ignore}
+### Criar o ambiente {docsify-ignore}
 
-Caso deseje provisionar o ambiente sem o uso do vagrant a seguinte infraestrutura deve ser provisionada.
+A seguinte infraestrutura deve ser provisionada.
 
 - 1 Host CentOS 7
   - 1Gb de RAM
@@ -45,39 +45,7 @@ Caso deseje provisionar o ambiente sem o uso do vagrant a seguinte infraestrutur
   - Nomeada como sonarqube (O nome pode ser alterado)
 
 #### Compartilhando chave do usuário local com as máquinas remotas.
-- Edite o arquivo hosts-root. Para fins de teste existem dois arquivos mas para execução escolher um deles.
-  - hosts-root (Criado para testes em ambiente VirtualBox)
-
-  ```
-  [vars]
-  ansible_ssh_user=root
-  ansible_become=yes
-
-  [nodes]
-  jenkins-master ansible_host=192.168.56.110
-  jenkins-slave1 ansible_host=192.168.56.120
-  jenkins-slave2 ansible_host=192.168.56.130
-  support-tools ansible_host=192.168.56.140
-  nexus ansible_host=192.168.56.150
-  sonarqube ansible_host=192.168.56.160
-
-  [master]
-  jenkins-master ansible_host=192.168.56.110
-
-  [slaves]
-  jenkins-slave1 ansible_host=192.168.56.120
-  jenkins-slave2 ansible_host=192.168.56.130
-
-  [tools]
-  support-tools ansible_host=192.168.56.140
-
-  [repository]
-  nexus ansible_host=192.168.56.150
-
-  [sonar]
-  sonarqube ansible_host=192.168.56.160
-  ```
-
+- Edite o arquivo hosts-root
   - hosts-root-vmware (Criado para testes em ambiente vmware)
 
   ```
@@ -110,7 +78,7 @@ Caso deseje provisionar o ambiente sem o uso do vagrant a seguinte infraestrutur
   sonarqube ansible_host=10.1.124.133
   ```
 
-Modifique estes arquivos para que reflitam exatamente os IPs e os nomes dos hosts que receberão as configurações.
+Modifique este arquivo para que reflitam exatamente os IPs e os nomes dos hosts que receberão as configurações.
 Execute o seguinte playbook para transferir a chave local para o ambiente remoto
 
 Também é importante garantir que todas as máquinas conheçam uma a outra. Este passo pode ser alcançado através da edição do arquivo /etc/hosts ou através da configuração de um DNS.
@@ -148,11 +116,6 @@ Após ajustar o arquivo de variáveis e inventário executar o playbook conforme
 ```
 cd ansible
 ansible-playbook -i hosts-root-vmware playbook-root.yml -vv
-```
-OU
-```
-cd ansible
-ansible-playbook -i hosts-root playbook-root.yml -vv
 ```
 
 ### Procedendo com a criação do ambiente

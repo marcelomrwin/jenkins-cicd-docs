@@ -92,7 +92,7 @@ ssh admin@10.1.124.128 systemctl restart jenkins
 ```
 
 ### Validar plugins instalados
-Certifique-se de que todos os plugins abaixo estejam devidamente instalados.
+Certifique-se de que todos os plugins abaixo estejam devidamente instalados, nas versões mínimas mencionadas.
 - workflow-aggregator: '2.6'
 - gradle: '1.31'
 - blueocean: '1.13.2'
@@ -115,3 +115,23 @@ Certifique-se de que todos os plugins abaixo estejam devidamente instalados.
 - junit-attachments: '1.5'
 - warnings-ng: '4.0.0'
 - authorize-project: '1.3.0'
+
+### Resolução de problemas.
+Devido a instabilidade do plugin configuration-as-code é possível que o passo de instalação acima apresente erros. Neste caso execute as instruções abaixo:
+
+**Os passos abaixo devem ser executados apenas se a execução do plugin acima não funcionar**.
+
+#### Criar um token para chamadas de API.
+- Acesse a URL https://10.1.124.128/me/configure. *Ajuste a URL de acordo com sua configuração*
+- Clique em **Add new Token**
+- No campo **Default name** informe um nome para o token, por exemplo *default*
+- Clique em **Generate**
+![](images/fig109.png)</br>
+- Copie o token gerado
+- Edite o arquivo ansible/playbook-vars.yml
+  - Atualize o valor da variável *api_key* com o novo valor gerado no passo anterior.
+- Execute o playbook *playbook-plugins.yml*</br>
+```
+cd ansible
+ansible-playbook -i hosts-vmware playbook-plugins.yml -vv
+```

@@ -14,4 +14,5 @@
   - **File Management Strategy:** _ConfigOnly_
   - **Storage Strategy:** Clique em **Add Storage &rarr;** _TarGzStorage_
   - **Backup Location &rarr; LocalDirectory &rarr; Backup directory path &rarr;** _/mnt/backups_ (Este caminho é montado via NFS para garantir a replicação do arquivo bem como centralizar numa unidade de storage mais segura)
+  - **Marque Enable This Location**
   - Clique em **Save**

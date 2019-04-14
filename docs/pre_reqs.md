@@ -12,7 +12,7 @@ ssh-keygen -q -t rsa -b 4096
 Não inclua senha/password para proteger a chave.
 Deixe a configuração padrão ~/.ssh/id_rsa.
 
-O seguinte playbook executa a tarefa de transferir a chave local para o servidor.
+O seguinte playbook executa a tarefa de transferir a chave local para o servidor. O playbook está localizado na pasta ansible/playbook-copy-id.yml
 ```
 ---
 - name: copy local ssh to remote hosts
