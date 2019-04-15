@@ -84,7 +84,7 @@ Clique em **Add New Source**
 
 ### Instalar e configurar NFS no Jenkins Master
 ```
-cd ansible/tools
+cd ansible/tools 
 ansible-playbook -i hosts-vmware playbook-nfs.yml -vv
 ```
 
