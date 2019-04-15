@@ -21,11 +21,11 @@ openssl genrsa -out ca.key 1024
 ```
 **Step 2: Generate Certificate Request File**
 ```
-openssl req –new –key ca.key –out ca.csr
+openssl req -new -key ca.key -out ca.csr
 ```
 **Step 3: Generate the Self Signed Certificate**
 ```
-openssl x509 –req –days 365 –in ca.csr –signkey ca.key –out ca.crt
+openssl x509 -req -days 365 -in ca.csr -signkey ca.key -out ca.crt
 ```
 
 ### Para ignorar a geração de arquivos .retry no ansible utilizar
