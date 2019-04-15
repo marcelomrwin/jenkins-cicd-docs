@@ -17,6 +17,8 @@ ansible-galaxy install geerlingguy.pip
 ```
 
 ### Executar o seguinte playbook do ansible
+Edite o arquivo playbook-vars.yaml e hosts-vmware estejam refletindo a infraestrutura atual. Verifique e valide os nomes das máquinas e IPs.
+
 ```
 cd ansible/tools
 ansible-playbook -i hosts-vmware playbook.yml -vv
