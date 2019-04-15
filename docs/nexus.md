@@ -7,6 +7,8 @@ ansible-galaxy install ansiblebit.oracle-java --force
 ansible-galaxy install ansible-thoteam.nexus3-oss --force
 ```
 
+**Verificar certificado gerado para incluir no jenkins, nodes e masters**
+
 **Certifique-se de utilizar a versão mínima recomendada:**
 - geerlingguy.apache, 3.0.3
 - ansiblebit.oracle-java, 6.22.8

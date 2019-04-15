@@ -14,7 +14,7 @@ Verique se está instalado a versão mínima recomendada.
 - lean_delivery.java, 2.0.1
 - anxs.postgresql, v1.10.1
 - jdauphant.ssl-certs, v1.7.1
-- jdauphant.nginx, v2.21.2
+- nginxinc.nginx, 0.11.0
 - lean_delivery.sonarqube, 1.5.1
 
 ### Instalando através do ansible
