@@ -17,7 +17,7 @@ mkpasswd --method=sha-512
 
 **Step 1: Generate Private Key**
 ```
-openssl genrsa –out ca.key 1024
+openssl genrsa -out ca.key 1024
 ```
 **Step 2: Generate Certificate Request File**
 ```
