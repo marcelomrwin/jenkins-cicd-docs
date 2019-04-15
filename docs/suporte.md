@@ -7,13 +7,13 @@
 
 ### Instalar a Role do NFS
 ```
-ansible-galaxy install geerlingguy.nfs
+ansible-galaxy install geerlingguy.nfs --force
 ```
 
 ### Instalar a Role do Docker
 ```
-ansible-galaxy install geerlingguy.docker
-ansible-galaxy install geerlingguy.pip
+ansible-galaxy install geerlingguy.docker --force
+ansible-galaxy install geerlingguy.pip --force
 ```
 
 ### Executar o seguinte playbook do ansible
@@ -84,7 +84,7 @@ Clique em **Add New Source**
 
 ### Instalar e configurar NFS no Jenkins Master
 ```
-cd ansible/tools 
+cd ansible/tools
 ansible-playbook -i hosts-vmware playbook-nfs.yml -vv
 ```
 

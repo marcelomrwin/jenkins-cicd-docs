@@ -2,9 +2,9 @@
 Importe as roles do ansible
 
 ```
-ansible-galaxy install geerlingguy.apache
-ansible-galaxy install ansiblebit.oracle-java
-ansible-galaxy install ansible-thoteam.nexus3-oss
+ansible-galaxy install geerlingguy.apache --force
+ansible-galaxy install ansiblebit.oracle-java --force
+ansible-galaxy install ansible-thoteam.nexus3-oss --force
 ```
 
 **Certifique-se de utilizar a versão mínima recomendada:**
