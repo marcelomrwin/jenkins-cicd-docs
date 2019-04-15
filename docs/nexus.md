@@ -14,6 +14,8 @@ ansible-galaxy install ansible-thoteam.nexus3-oss --force
 
 **Observação: Antes de executar o playbook garanta que os certificados estão válidos para o endereço final do nexus. Se desejar gerar novos certificados consultar a sessão extra. Caso possua certificados válidos basta substituir os certificados padrão. ca.crt, ca.csr e ca.key**
 
+**Valide e verifique o hosts-vmware e playbook-vars**
+
 Acesse a pasta [nexus](../ansible/nexus) e execute:
 ```
 cd ansible/nexus
