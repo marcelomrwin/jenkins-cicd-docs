@@ -72,11 +72,11 @@ apt-get install git -y
 ```
 - Instale a java sdk 8
 ```
-apt-get install openjdk-8-jdk
+apt-get install openjdk-8-jdk -y
 ```
 - Instale o Maven
 ```
-apt-get install maven
+apt-get install maven -y
 ```
 - Configure o Maven
 ```

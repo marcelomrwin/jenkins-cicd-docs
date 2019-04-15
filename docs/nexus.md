@@ -24,7 +24,7 @@ Quando solicitado digite a senha do vault: `password`
 Após estes passos o nexus será provisionado na URL https://10.1.124.132. O usuário administrativo padrão é `admin` e a senha `admin123`.
 Existe também o usuário `jenkins` com a senha `password`, este usuário está configurado no LDAP.
 
-_Os passos abaixo servem apenas para verificação, o playbook do ansible já realiza todas estas configurações automaticamente._
+## _Os passos abaixo servem apenas para verificação, o playbook do ansible já realiza todas estas configurações automaticamente._ {docsify-ignore}
 <br/>Continua no passo [Configurando o Jenkins para acesso ao Nexus](#configurando-o-jenkins-para-acesso-ao-nexus)
 
 ### Configuração do LDAP no Nexus
@@ -78,8 +78,8 @@ No formulário apresentado preencha com os seguintes dados:
 - **Role description**: All Developers
 - **Privileges**:
   Mova para a coluna **Given** os valores:
-    - all-repos-read
-    - company-project-deploy
+    - nx-repository-view-maven2-*-read
+    - nx-repository-admin-maven2-company-project-*
     - nx-search-read
 - Clique em **Create role**
 

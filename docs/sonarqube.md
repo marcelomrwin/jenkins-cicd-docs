@@ -3,11 +3,11 @@
 ### Instalando as dependências:
 
 ```bash
-ansible-galaxy install lean_delivery.java
-ansible-galaxy install anxs.postgresql
-ansible-galaxy install jdauphant.ssl-certs
-ansible-galaxy install nginxinc.nginx
-ansible-galaxy install lean_delivery.sonarqube
+ansible-galaxy install lean_delivery.java --force
+ansible-galaxy install anxs.postgresql --force
+ansible-galaxy install jdauphant.ssl-certs --force
+ansible-galaxy install nginxinc.nginx --force
+ansible-galaxy install lean_delivery.sonarqube --force
 ```
 
 Verique se está instalado a versão mínima recomendada.
