@@ -3,7 +3,7 @@
 - Em **Domínio (realm) de segurança** selecione **LDAP**
 ![](/images/fig42-ldap.png)
 - Preencha o formulário com os valores:
-  - **Server**: *ldap://10.1.124.131:389*
+  - **Server**: *ldap://10.1.123.206:389*
   - Clique em **Advanced Server Configuration...**
   - **User search base**: *ou=Users,dc=cicd,dc=local*
   - **User search filter**: *uid={0}*

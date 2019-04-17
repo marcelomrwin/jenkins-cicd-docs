@@ -7,8 +7,6 @@ ansible-galaxy install ansiblebit.oracle-java --force
 ansible-galaxy install ansible-thoteam.nexus3-oss --force
 ```
 
-**Verificar certificado gerado para incluir no jenkins, nodes e masters**
-
 **Certifique-se de utilizar a versão mínima recomendada:**
 - geerlingguy.apache, 3.0.3
 - ansiblebit.oracle-java, 6.22.8
@@ -25,7 +23,7 @@ ansible-playbook -i hosts-vmware --ask-vault-pass --extra-vars '@passwd.yml' pla
 ```
 Quando solicitado digite a senha do vault: `password`
 
-Após estes passos o nexus será provisionado na URL https://10.1.124.132. O usuário administrativo padrão é `admin` e a senha `admin123`.
+Após estes passos o nexus será provisionado na URL https://10.1.123.207. O usuário administrativo padrão é `admin` e a senha `admin123`.
 Existe também o usuário `jenkins` com a senha `password`, este usuário está configurado no LDAP.
 
 ## _Os passos abaixo servem apenas para verificação, o playbook do ansible já realiza todas estas configurações automaticamente._ {docsify-ignore}
@@ -145,7 +143,7 @@ Clique em **Save**
 Preencha o formulário com os dados abaixo:
 - **Display Name:** Nexus
 - **Server ID:** nexus
-- **Server URL:** https://10.1.124.132/
+- **Server URL:** https://10.1.123.207/
 - **Credentials:** Selecione Jenkins LDAP
 - clique em **Test connection** para assegurar que a comunicação com o servidor nexus está funcional.
 - clique em **Salvar**

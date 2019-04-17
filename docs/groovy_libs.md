@@ -23,15 +23,15 @@ Para adicionar as bibliotecas compartilhadas de funcionalidades para o pipeline 
 
 - Configure o servidor remoto para o serviço GIT Local. No ambiente de homologação é um servidor GOGS
   ```bash
-  git remote add origin https://10.1.124.131/jenkins/groovy_libs.git
+  git remote add origin https://10.1.123.206/jenkins/groovy_libs.git
   ```
-  **No exemplo acima o endereço 10.1.124.131 corresponde ao IP do servidor onde o servidor GIT está em execução. Caso utilize um outro IP fazer o ajuste do endereço correto**
+  **No exemplo acima o endereço 10.1.123.206 corresponde ao IP do servidor onde o servidor GIT está em execução. Caso utilize um outro IP fazer o ajuste do endereço correto**
 - Edite o arquivo vars/getSonarQubeURL.groovy para refletir a URL do servidor SonarQube.
   ```groovy
   #!/usr/bin/env groovy
 
   def call() {
-    "http://10.1.124.133:9000"
+    "http://10.1.123.189:9000"
   }
   ```
   Salve o arquivo com o novo conteúdo.
@@ -55,6 +55,6 @@ Preencha o formulário conforme os dados abaixo:
 - **Marcar Load implicity**
 - **Selecione Modern SCM**
 - **Selecione GIT**
-- **Project Repository:** http://10.1.124.131/jenkins/groovy_libs.git
+- **Project Repository:** http://10.1.123.206/jenkins/groovy_libs.git
 - **Credentials:** Selecione Jenkins LDAP
 - Clique em **Salvar**

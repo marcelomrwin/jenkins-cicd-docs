@@ -43,7 +43,7 @@ No campo **Content** preencha com o conteúdo abaixo:
       <repositories>
         <repository>
           <id>company-project</id>
-          <url>https://10.1.124.132/repository/company-project/</url>
+          <url>https://10.1.123.207/repository/company-project/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
@@ -53,7 +53,7 @@ No campo **Content** preencha com o conteúdo abaixo:
         </repository>
         <repository>
           <id>nexus-release</id>
-          <url>https://10.1.124.132/repository/maven-releases/</url>
+          <url>https://10.1.123.207/repository/maven-releases/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
@@ -63,7 +63,7 @@ No campo **Content** preencha com o conteúdo abaixo:
         </repository>
         <repository>
           <id>nexus-snapshot</id>
-          <url>https://10.1.124.132/repository/maven-snapshots/</url>
+          <url>https://10.1.123.207/repository/maven-snapshots/</url>
           <releases>
             <enabled>false</enabled>
           </releases>
@@ -73,7 +73,7 @@ No campo **Content** preencha com o conteúdo abaixo:
         </repository>
         <repository>
           <id>public</id>
-          <url>https://10.1.124.132/repository/public/</url>
+          <url>https://10.1.123.207/repository/public/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
@@ -85,7 +85,7 @@ No campo **Content** preencha com o conteúdo abaixo:
       <pluginRepositories>
         <pluginRepository>
           <id>nexus-release</id>
-          <url>https://10.1.124.132/repository/maven-releases/</url>
+          <url>https://10.1.123.207/repository/maven-releases/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
@@ -95,7 +95,7 @@ No campo **Content** preencha com o conteúdo abaixo:
         </pluginRepository>
         <pluginRepository>
           <id>nexus-snapshot</id>
-          <url>https://10.1.124.132/repository/maven-snapshots/</url>
+          <url>https://10.1.123.207/repository/maven-snapshots/</url>
           <releases>
             <enabled>false</enabled>
           </releases>
@@ -105,7 +105,7 @@ No campo **Content** preencha com o conteúdo abaixo:
         </pluginRepository>
         <pluginRepository>
           <id>public</id>
-          <url>https://10.1.124.132/repository/public/</url>
+          <url>https://10.1.123.207/repository/public/</url>
           <releases>
             <updatePolicy>never</updatePolicy>
           </releases>
@@ -121,7 +121,7 @@ No campo **Content** preencha com o conteúdo abaixo:
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <sonar.host.url>http://10.1.124.133:9000</sonar.host.url>
+        <sonar.host.url>http://10.1.123.189:9000</sonar.host.url>
         <sonar.login>admin</sonar.login>
         <sonar.password>admin</sonar.password>
       </properties>
@@ -156,7 +156,7 @@ No campo **Content** preencha com o conteúdo abaixo:
     <mirror>
       <id>public</id>
       <name>public</name>
-      <url>https://10.1.124.132/repository/public/</url>
+      <url>https://10.1.123.207/repository/public/</url>
       <mirrorOf>*</mirrorOf>
     </mirror>
   </mirrors>

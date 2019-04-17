@@ -22,12 +22,12 @@ O seguinte playbook executa a tarefa de transferir a chave local para o servidor
     - name: copy ssh key
       command: ssh-copy-id root@{{ item }}
       with_items:
-        - 10.1.124.128
-        - 10.1.124.129
-        - 10.1.124.130
-        - 10.1.124.131
-        - 10.1.124.132
-        - 10.1.124.133
+        - 10.1.123.208
+        - 10.1.123.209
+        - 10.1.123.210
+        - 10.1.123.206
+        - 10.1.123.207
+        - 10.1.123.189
 ```
 
 Modifique estes arquivos para que reflitam exatamente os IPs e os nomes dos hosts que receberão as configurações.
@@ -50,3 +50,8 @@ Digite a senha do usuário root sempre que solicitado.
 cd ansible\admin
 ansible-playbook -i hosts-vmware playbook-user-admin.yml -vv
 ```
+
+### Gerar certificado para o Nexus.
+Os nodes do jenkins realizam conexão com o repositório do Nexus através de https com certificado auto assinado. Antes de prosseguir verifique os certificados ansible/nexus/ca.*
+
+Estes certificados foram gerados utilizando o **CN = 10.1.123.207**. Caso o IP do servidor onde o Nexus será executado seja diferente favor gerar uma nova cadeia de certificados antes de prosseguir. Consulte a guia *Extra* para instruções de como gerar novos certificados.

@@ -18,7 +18,7 @@ Clique em **Criar repositório**
 
 Adicione o novo repositório no projeto hello-world-greeting
 ```
-git remote add origin http://10.1.124.131/jenkins/hello-world-greeting.git
+git remote add origin http://10.1.123.206/jenkins/hello-world-greeting.git
 ```
 Submeta o código local para o servidor GOGS
 ```
@@ -38,7 +38,7 @@ Na sessão **Branch Sources**
 ![](/images/fig85.png)
 
 No formulário **Branch Sources** informe
-- **Project Repository:** http://10.1.124.131/jenkins/hello-world-greeting.git
+- **Project Repository:** http://10.1.123.206/jenkins/hello-world-greeting.git
 - **Credentials:** Selecione Jenkins LDAP
 - Deixe os demais campos com valor padrão
 - Certifique-se de que na sessão **Build Configuration** o **Mode** selecionado seja *by Jenkinsfile* e **Script Path** seja *Jenkinsfile*.
@@ -57,7 +57,7 @@ O jenkins exibirá uma tela com um resumo do pipeline conforme abaixo:
 ![](/images/fig93.png)</br>
 
 ### Configurando um Webhook no Gogs
-Acesse o Gogs https://10.1.124.131
+Acesse o Gogs https://10.1.123.206
 - acesse o projeto jenkins/hello-world-greeting
 - clique em **Configurações**
 - no menu do lado esquerdo clique em **Webhooks**

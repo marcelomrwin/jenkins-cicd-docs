@@ -1,9 +1,9 @@
 ### Acessar a API remota do Docker
-A API remota do docker está acessível através da URL http://10.1.124.131:4243
+A API remota do docker está acessível através da URL http://10.1.123.206:4243
 
 Um exemplo de como obter as imagens no repositório remoto:
 ```
-curl -X GET http://10.1.124.131:4243/images/json
+curl -X GET http://10.1.123.206:4243/images/json
 ```
 
 ### Configurando o Jenkins para acessar a API do Docker
@@ -20,7 +20,7 @@ curl -X GET http://10.1.124.131:4243/images/json
 Preencha o formulário com as informações
 ![](/images/fig68-docker.png)
   - **Name:** _Default Docker Host_
-  - **Docker Host URI:** _tcp://10.1.124.131:4243/_
+  - **Docker Host URI:** _tcp://10.1.123.206:4243/_
   - utilize o botão **Test Connection** para garantir que o jenkins consegue comunicação com o servidor Docker
   - **Enabled:** Deixar marcado
   - **Expose DOCKER_HOST:** Deixar marcado
@@ -29,7 +29,7 @@ Preencha o formulário com as informações
 ### Configurando uma imagem docker padrão
 - Acesse o host support-tools que provê o ambiente Docker. Na configuração parão o acesso se dá através do comando:
 ```
-ssh root@10.1.124.131
+ssh root@10.1.123.206
 ```
 _obs: Lembre-se de alterar o IP caso tenha modificado a configuração padrão_
 
@@ -88,27 +88,27 @@ chmod -R 777 /opt/apache-maven-3.5.4/
 rm -rf apache-maven-3.5.4-bin.tar.gz
 ```
 
+### **O conteúdo do certificado abaixo corresponde ao arquivo ansible/nexus/ca.csr. Caso possua outro certificado ou tenha gerado um novo atualize o conteúdo do arquivo**</br> {docsify-ignore}
 - Crie o arquivo de certificado do nexus na imagem docker
   - digite `vi ca.crt`
   - na janela do vi que abriu digite `A`
-  - cole o seguinte conteúdo dentro do arquivo:
+  - cole o seguinte conteúdo dentro do arquivo:  
   ```
   -----BEGIN CERTIFICATE-----
-  MIICrDCCAhUCFHbqXaa7OU9KIEoYKmI2BX+zkke8MA0GCSqGSIb3DQEBCwUAMIGU
-  MQswCQYDVQQGEwJCUjEXMBUGA1UECAwOUmlvIGRlIEphbmVpcm8xFzAVBgNVBAcM
-  DlJpbyBkZSBKYW5laXJvMQswCQYDVQQKDAJUSTELMAkGA1UECwwCVEkxFTATBgNV
-  BAMMDDEwLjEuMTI0LjEzMjEiMCAGCSqGSIb3DQEJARYTbmV4dXNAYW5jaW5lLmdv
-  di5icjAeFw0xOTAzMDkxNTU4NTFaFw0yMTAyMjYxNTU4NTFaMIGUMQswCQYDVQQG
-  EwJCUjEXMBUGA1UECAwOUmlvIGRlIEphbmVpcm8xFzAVBgNVBAcMDlJpbyBkZSBK
-  YW5laXJvMQswCQYDVQQKDAJUSTELMAkGA1UECwwCVEkxFTATBgNVBAMMDDEwLjEu
-  MTI0LjEzMjEiMCAGCSqGSIb3DQEJARYTbmV4dXNAYW5jaW5lLmdvdi5icjCBnzAN
-  BgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAxmQPktPr2t0lrmMz94bYxD4Y/FP9/tpE
-  pf0jm4hFix9Fce+mA50jkGo/LIUfGgFqICXvs9dZqyMDyNNb8b2L7i3VoduakVby
-  gvFtict5c48+IThuteKVlDNr4On5X5U3PS2RA/oRULEHK37aj7Xry4/ysq/i/d2w
-  zmtCre3fQD8CAwEAATANBgkqhkiG9w0BAQsFAAOBgQBwt40OqALuG39BvYTe3Adl
-  xCOvZ8TkDVv7NQ+mVXp1SdquChjJGvN7pDEf+e+6Sh1zILYijkWgZhiQnm156W9Q
-  5nLMuSx4cX4UUA8H1HtiW8BmF7CV1Uw/iJAnlcYrfwHIil5H9HJ7XsN70Z3fdaEC
-  RG0YpY+kyb0sj2pNVGoyjw==
+  MIICjjCCAfcCFE4ESn3CfwxCjCtQLuc/T2TcxKARMA0GCSqGSIb3DQEBCwUAMIGF
+  MQswCQYDVQQGEwJicjEXMBUGA1UECAwOcmlvIGRlIGphbmVpcm8xFzAVBgNVBAcM
+  DnJpbyBkZSBqYW5laXJvMQ8wDQYDVQQKDAZhbmNpbmUxFTATBgNVBAMMDDEwLjEu
+  MTIzLjIwNzEcMBoGCSqGSIb3DQEJARYNYW5jaW5lQGdvdi5icjAeFw0xOTA0MTYw
+  MTE3NDlaFw0yMDA0MTUwMTE3NDlaMIGFMQswCQYDVQQGEwJicjEXMBUGA1UECAwO
+  cmlvIGRlIGphbmVpcm8xFzAVBgNVBAcMDnJpbyBkZSBqYW5laXJvMQ8wDQYDVQQK
+  DAZhbmNpbmUxFTATBgNVBAMMDDEwLjEuMTIzLjIwNzEcMBoGCSqGSIb3DQEJARYN
+  YW5jaW5lQGdvdi5icjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAyPXtDchW
+  JLz65fug2QsZ5YWeErARa35Z0EQPvjl5yIKYUgtuLnWafH+IHt8ZtqcZfX4Wr5sT
+  QdLq4YcoFh1edjRseOkGj1WtNwe2gjTVv+msjMCLFiAeMXtqvzPtNvaxjNLFt2ED
+  0V2xfoo3QwwG4PklGdYwJLzsPr7fVmAaZ5kCAwEAATANBgkqhkiG9w0BAQsFAAOB
+  gQB62vWVrx7eGSYV2au9/bmPQxWIghnUeRjuA1+0WHIkIruOXYp5aSlDaTDRG5kg
+  Y4zch1QuQ44ROuA/B6POgQMCX47w4Q+72NCKkxOAKi3LouUTYVZoXTJ83+edy3eh
+  z9kjIsgwaMRDYgXWZ3E1z8kOirZQHcMK8cySq5QqzI+tgQ==
   -----END CERTIFICATE-----
   ```
   - pressione `esc`

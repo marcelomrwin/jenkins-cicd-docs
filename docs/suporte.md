@@ -25,8 +25,8 @@ ansible-playbook -i hosts-vmware playbook.yml -vv
 ```
 
 As seguintes URLs estarão disponíveis:
-- https://10.1.124.131 - GOGS
-- https://10.1.124.131:81/svn/reposvn - Subversion
+- https://10.1.123.206 - GOGS
+- https://10.1.123.206:81/svn/reposvn - Subversion
 
 Os seguintes serviços estarão disponíveis:
 - NFS server
@@ -40,7 +40,7 @@ Os seguintes serviços estarão disponíveis:
   - **senha**: gogs
   - **Nome do banco**: gogs
 ![](/images/fig39-gogs.png)
-* **URL do aplication** inserir `https://10.1.124.131/`
+* **URL do aplication** inserir `https://10.1.123.206/`
 
 * Se desejar pode também criar a conta inicial selecionando **Configurações da conta de administrador**
 ![](/images/fig78.png)
@@ -70,7 +70,7 @@ Clique em **Registrar** e preencha o formulário
 Preencha o formulário com as informações:
   - **Authentication Type**: LDAP (simple auth)
   - **Security Protocol**: Unecrypted
-  - **Host**: 10.1.124.131
+  - **Host**: 10.1.123.206
   - **Port**: 389
   - **User DN**: `uid=%s,ou=Users,dc=cicd,dc=local`
   - **User Filter**: `(&(objectClass=posixAccount)(uid=%s))`

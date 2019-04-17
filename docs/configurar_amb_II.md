@@ -8,6 +8,7 @@ Primeiramente é necessário gerar uma credencial administrativa para acessar os
 - Clique em **Add Credentials**
 - Preencha conforme exemplo abaixo
 ![](images/fig110.png)<br/>
+  - **Kind:** SSH Username with private key
   - **ID:** admin
   - **Description:** Admin credentials
   - **Username:** jenkins
@@ -15,7 +16,7 @@ Primeiramente é necessário gerar uma credencial administrativa para acessar os
   - **Key:** No campo key copie e cole com o conteúdo do seguinte comando:</br>
   ```
   cd ansible
-  cat buffer/jenkins-master-id_rsa
+  cat buffer/rj-jenkins-master-id_rsa
   ```
   - Clique em **OK/Salvar**
 
@@ -25,8 +26,8 @@ Verifique e valide a configuração dos nodes nas linhas abaixo:
 - name: Install new nodes
   shell: "/opt/jenkins-create-node.sh {{ item.name }} {{ item.ip }}"
   with_items:
-    - { name: 'jenkins-node1', ip: '10.1.124.129' }
-    - { name: 'jenkins-node2', ip: '10.1.124.130' }
+    - { name: 'rj-jenkins-node1', ip: '10.1.123.209' }
+    - { name: 'rj-jenkins-node2', ip: '10.1.123.210' }
   when: inventory_hostname in groups['master']
 ```
 **Complete com as informações dos nodes que serão slaves**
@@ -36,6 +37,11 @@ Após editar o playbook execute-o com o comando abaixo:
 cd ansible
 ansible-playbook -i hosts-vmware playbook-nodes.yml -vv
 ```
+
+Acesse os nodes e observe os rótulos/labels.
+
+**Caso uma mensagem aparece no menu Gerenciar Jenkins sobre dados antigos pode clicar em administrar e remover dados antigos. É um bug no jenkins que não consegue identificar os nodes XML como válidos. Após a remoção garanta que os nodes continuam ativos e os rótulos _build_ e _maven_ continuam existindo. Se não constarem nos nodes inclua-os manualmente antes de prosseguir**<br/>
+
 **Siga para o passo [33](#_33-na-lista-de-nós-clique-no-master)**
 
 ## Inserindo nós manualmente

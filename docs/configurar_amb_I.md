@@ -1,9 +1,9 @@
 Apesar de opcional é recomendado manter uma sessão aberta no servidor jenkins para observar os logs. Para isto execute o comando:
   ```
-  ssh admin@10.1.124.128 tail -F /var/log/jenkins/jenkins.log
+  ssh admin@10.1.123.208 tail -F /var/log/jenkins/jenkins.log
   ```
 
-Após a finalização da criação do ambiente acessar a URL https://10.1.124.128
+Após a finalização da criação do ambiente acessar a URL https://10.1.123.208
 
 ![Alt](images/fig01-ssl-error.png "Erro SSL")
 
@@ -13,13 +13,13 @@ Após a finalização da criação do ambiente acessar a URL https://10.1.124.12
 
 ![Alt](images/fig02-ssl-error.png "Erro SSL")
 
-### 4. Clique em <b>Ir para 10.1.124.128 (não seguro)</b>
+### 4. Clique em <b>Ir para 10.1.123.208 (não seguro)</b>
 ### 5. Recupere a senha definida inicialmente durante a instalação. Existem duas maneiras de recuperar esta senha inicial:
-  1. No diretório raiz da execução do ansible na pasta buffer ler o conteúdo do arquivo jenkins-master-initialAdminPassword `cat buffer/jenkins-master-initialAdminPassword`
+  1. No diretório raiz da execução do ansible na pasta buffer ler o conteúdo do arquivo jenkins-master-initialAdminPassword `cat buffer/rj-jenkins-master-initialAdminPassword`
 
   1. Recuperar diretamente do jenkins-master
 ```
-ssh admin@10.1.124.128 cat /var/lib/jenkins/secrets/initialAdminPassword
+ssh admin@10.1.123.208 cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 O retorno deve ser um valor como: <b>da4f06f440e04cf7935a670cb9635759</b> utilize este valor no campo Administrator password.
 ![Alt](images/fig03-initial-passwd.png "Unlock")
@@ -40,17 +40,22 @@ Clique em **Continue**
 ### 8. Preencha o formulário acima com informações relativas ao primeiro usuário a ser criado. <i>Este usuário terá privilégios administrativos</i>
 ### 9. Clique em <b>Save and Continue</b>
 ![Alt](images/fig07-instance.png "Instance config")
-### 10. Informe o valor `https://10.1.124.128` no campo <b>Jenkins URL</b>
+### 10. Informe o valor `https://10.1.123.208` no campo <b>Jenkins URL</b>
 ### 11. Cliquem em <b>Save and Finish</b>
 ![Alt](images/fig08-start-jenkins.png "Start Jenkins")
 ### 12. Clique em <b>Start using Jenkins</b>
 ![Start Jenkins](images/fig09-login.png)
 
-  - *Em alguns casos o navegador o navegador pode guardar um cache da URL e a tela pode "congelar". Caso isto ocorra digite na URL https://10.1.124.128/login?from=%2F*
+  - *Em alguns casos o navegador o navegador pode guardar um cache da URL e a tela pode "congelar". Caso isto ocorra digite na URL https://10.1.123.208/login?from=%2F*
   - *Pode haver situação que após a configuração do primeiro usuário o Jenkins entre em loop e não permita o login. Para contornar este BUG execute o reinicio do jenkins.*
   ```
-  ssh admin@10.1.124.128 systemctl restart jenkins
+  ssh admin@10.1.123.208 systemctl restart jenkins
   ```
+
+### Observação: {docsify-ignore}
+
+**Os passos 13-20 podem ser ignorados (recomendado devido a instabilidade do plugin configuration-as-code) se usar a estratégia de instalação de plugins através do ansible.**<br/>
+**Siga para a sessão [Resolução de problemas](#resolução-de-problemas-1)**
 
 ### 13. Informe o usuário e senha criados no passo 8
 ![](images/fig10-gerenciar-01.png)
@@ -73,7 +78,7 @@ Clique em **Continue**
   - Aguarde a finalização da instalação (**Este processo pode levar de 7 a 10 minutos**)
   - Se desejar é possível acompanhar os logs no servidor realizando os seguintes passos:
     ```
-    ssh root@10.1.124.128 tail -f /var/log/jenkins/jenkins.log
+    ssh root@10.1.123.208 tail -f /var/log/jenkins/jenkins.log
     ```
       *ctrl + c para interromper*
   - Se durante a instalação uma janela similar abaixo aparecer ![](images/fig16-error.png) clique no link **Jenkins** no canto superior esquerdo. Em seguida clique em **Gerenciar Jenkins**
@@ -86,9 +91,31 @@ Clique em **Continue**
     - Na lista que aparecerá selecione o plugin *Blue Ocean*
     - No canto inferior da tela clique em **Baixar agora, instalar e depois reiniciar**
     - Certifique-se de marcar o checkbox para que o Jenkins reinicie tão logo finalize a instalação dos plugins.
+<br/>
+
 ### 20. Reinicie o Jenkins para finalizar a atualização e implantação das novas configurações.
 ```
-ssh admin@10.1.124.128 systemctl restart jenkins
+ssh admin@10.1.123.208 systemctl restart jenkins
+```
+
+### Resolução de problemas.
+Devido a instabilidade do plugin configuration-as-code é possível que o passo de instalação acima apresente erros. Neste caso execute as instruções abaixo:
+
+**Os passos abaixo devem ser executados apenas se a execução do plugin acima não funcionar ou se deseja instalar os plugins através de ansible e ignorar a ação do plugin**.
+
+#### Criar um token para chamadas de API.
+- Acesse a URL https://10.1.123.208/me/configure. *Ajuste a URL de acordo com sua configuração*
+- Clique em **Add new Token**
+- No campo **Default name** informe um nome para o token, por exemplo *default*
+- Clique em **Generate**
+![](images/fig109.png)</br>
+- Copie o token gerado
+- Edite o arquivo ansible/playbook-vars.yml
+  - Atualize o valor da variável *api_key* com o novo valor gerado no passo anterior.
+- Execute o playbook *playbook-plugins.yml*</br>
+```
+cd ansible
+ansible-playbook -i hosts-vmware playbook-plugins.yml -vv
 ```
 
 ### Validar plugins instalados
@@ -115,23 +142,3 @@ Certifique-se de que todos os plugins abaixo estejam devidamente instalados, nas
 - junit-attachments: '1.5'
 - warnings-ng: '4.0.0'
 - authorize-project: '1.3.0'
-
-### Resolução de problemas.
-Devido a instabilidade do plugin configuration-as-code é possível que o passo de instalação acima apresente erros. Neste caso execute as instruções abaixo:
-
-**Os passos abaixo devem ser executados apenas se a execução do plugin acima não funcionar**.
-
-#### Criar um token para chamadas de API.
-- Acesse a URL https://10.1.124.128/me/configure. *Ajuste a URL de acordo com sua configuração*
-- Clique em **Add new Token**
-- No campo **Default name** informe um nome para o token, por exemplo *default*
-- Clique em **Generate**
-![](images/fig109.png)</br>
-- Copie o token gerado
-- Edite o arquivo ansible/playbook-vars.yml
-  - Atualize o valor da variável *api_key* com o novo valor gerado no passo anterior.
-- Execute o playbook *playbook-plugins.yml*</br>
-```
-cd ansible
-ansible-playbook -i hosts-vmware playbook-plugins.yml -vv
-```
