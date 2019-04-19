@@ -37,7 +37,7 @@ _obs: Lembre-se de alterar o IP caso tenha modificado a configuração padrão_
 ```
 docker run -it ubuntu /bin/bash
 ```
-- Verifique a imagem base foi baixada no repositório local
+- Verifique que a imagem base foi baixada no repositório local
 
 - Crie o usuário jenkins
 ```

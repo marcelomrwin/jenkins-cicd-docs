@@ -1,17 +1,17 @@
-##Instalação e configuração do SonarQube {docsify-ignore}
+## Instalação e configuração do SonarQube {docsify-ignore}
 
 ### Instalando as dependências:
 
-```bash
-ansible-galaxy install lean_delivery.java --force
+```
+ansible-galaxy install geerlingguy.java --force
 ansible-galaxy install anxs.postgresql --force
 ansible-galaxy install jdauphant.ssl-certs --force
 ansible-galaxy install nginxinc.nginx --force
 ansible-galaxy install lean_delivery.sonarqube --force
 ```
 
-Verique se está instalado a versão mínima recomendada.
-- lean_delivery.java, 2.0.1
+Verique se está instalado a versão mínima recomendada de cada componente.
+- geerlingguy.java, 1.9.5
 - anxs.postgresql, v1.10.1
 - jdauphant.ssl-certs, v1.7.1
 - nginxinc.nginx, 0.11.0

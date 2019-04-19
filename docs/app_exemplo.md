@@ -11,6 +11,9 @@ Remova as referências ao repositório git
 ```
 git remote remove origin
 ```
+
+Edite o arquivo jenkinsFile e ajuste o valor da propriedade _NEXUS_URL_ apontando para o endereço nexus do seu ambiente.
+
 Crie um repositório no GOGS local
 ![](/images/fig83.png)
 Use o **Nome do repositório** hello-world-greeting</br>

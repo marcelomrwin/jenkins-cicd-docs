@@ -139,3 +139,7 @@ keytool -delete -alias 10.1.124.131 -keystore $JAVA_HOME/jre/lib/security/cacert
 ```
 curl http://10.1.124.133:9000/api/qualitygates/project_status\?projectKey\=hello-world-greeting
 ```
+
+## Versões alternativas para o jmeter
+https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-4.0.tgz
+https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.1.tgz
