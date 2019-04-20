@@ -110,7 +110,28 @@ Caso seja necessário clique em **Relaunch agent**
 ### Configurações Globais
 
 ![](images/fig31-global.png)
-### Clique em **Gerenciar Jenkins** -> **Global Tool Configuration**
+### Clique em **Gerenciar Jenkins &rarr; Global Tool Configuration**
+
+Na sessão **Pipeline Maven Configuration**
+- Em JDBC URL informe `jdbc:mysql://localhost:3306/jenkins_db`
+- Em JDBC Credentials
+  - Clique em Add &rarr; Jenkins
+
+![](images/fig114.png)</br>
+Preencha o formulário com os dados abaixo:
+- Domain: _Global..._
+- Kind: _Username with password_
+- Scope: _Global..._
+- Username: _jenkins_
+- Password: _password_
+- ID: _jenkins-mariadb_
+- Description: _Jenkins MariaDB_
+- Clique em **Add**
+
+Retornando a tela **Global Tool Configuration**
+- Selecione em JDBC Credentials _`jenkins/***** (Jenkins MariaDB)`_ _(A credencial criada conforme acima)_
+- Clique em **Validate Database Configuration**
+![](images/fig115.png)</br>
 
 ![](images/fig32-global.png)
 ### Na sessão JDK clique em **Adicionar JDK***

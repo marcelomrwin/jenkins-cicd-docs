@@ -146,3 +146,10 @@ Force um novo reinício do servidor Jenkins (**Apenas se houve problemas conform
 ```
 ssh root@10.1.123.128 systemctl restart jenkins
 ```
+
+### Instalando o MySQL/MariaDB
+Execute o playbook para instalação do MariaDB
+```
+cd ansible
+ansible-playbook -i hosts-vmware playbook-mysql.yml -vv
+```

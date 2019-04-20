@@ -142,3 +142,4 @@ Certifique-se de que todos os plugins abaixo estejam devidamente instalados, nas
 - junit-attachments: '1.5'
 - warnings-ng: '4.0.0'
 - authorize-project: '1.3.0'
+- database-mysql: '1.3'
