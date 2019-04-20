@@ -34,7 +34,7 @@ apt-get update
 apt-get install openssh-server -y
 mkdir /var/run/sshd
 apt-get update
-apt install openjdk-8-jdk git subversion -y
+apt install openjdk-8-jdk git subversion httping -y
 cd /tmp
 wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.tar.gz
 su jenkins

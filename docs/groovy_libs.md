@@ -57,4 +57,9 @@ Preencha o formulário conforme os dados abaixo:
 - **Selecione GIT**
 - **Project Repository:** http://10.1.123.206/jenkins/groovy_libs.git
 - **Credentials:** Selecione Jenkins LDAP
+
+Em Behaviours clique em **Add &rarr; Clean before checkout**</br>
+![](/images/fig113.png)</br>
+
+
 - Clique em **Salvar**
