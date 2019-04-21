@@ -148,6 +148,12 @@ ssh root@10.1.123.128 systemctl restart jenkins
 ```
 
 ### Instalando o MySQL/MariaDB
+
+Instale a role
+```
+ansible-galaxy install bertvv.mariadb --force
+```
+
 Execute o playbook para instalação do MariaDB
 ```
 cd ansible
