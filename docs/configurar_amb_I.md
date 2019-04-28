@@ -1,6 +1,6 @@
 Apesar de opcional é recomendado manter uma sessão aberta no servidor jenkins para observar os logs. Para isto execute o comando:
   ```
-  ssh admin@10.1.123.208 tail -F /var/log/jenkins/jenkins.log
+  ssh admin@10.1.123.208 sudo tail -F /var/log/jenkins/jenkins.log
   ```
 
 Após a finalização da criação do ambiente acessar a URL https://10.1.123.208
@@ -49,7 +49,7 @@ Clique em **Continue**
   - *Em alguns casos o navegador o navegador pode guardar um cache da URL e a tela pode "congelar". Caso isto ocorra digite na URL https://10.1.123.208/login?from=%2F*
   - *Pode haver situação que após a configuração do primeiro usuário o Jenkins entre em loop e não permita o login. Para contornar este BUG execute o reinicio do jenkins.*
   ```
-  ssh admin@10.1.123.208 systemctl restart jenkins
+  ssh admin@10.1.123.208 sudo systemctl restart jenkins
   ```
 
 ### Observação: {docsify-ignore}
@@ -112,6 +112,7 @@ Devido a instabilidade do plugin configuration-as-code é possível que o passo 
 - Copie o token gerado
 - Edite o arquivo ansible/playbook-vars.yml
   - Atualize o valor da variável *api_key* com o novo valor gerado no passo anterior.
+- Clique em **Salvar**
 - Execute o playbook *playbook-plugins.yml*</br>
 ```
 cd ansible

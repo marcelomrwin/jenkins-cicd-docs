@@ -3,6 +3,7 @@
 ## Inserindo nós através do playbook ansible.
 Alguns dos passos abaixo podem ser automatizados através do uso do playbook *playbook-nodes.yml* na pasta ansible.</br>
 **Usando o método de inclusão através do playbook siga diretamente para o passo 33**
+
 Primeiramente é necessário gerar uma credencial administrativa para acessar os nodes remotos.
 - Na página inicial do Jenkins clique em **Credentials &rarr; Domains &rarr; (global)**
 - Clique em **Add Credentials**
@@ -40,7 +41,7 @@ ansible-playbook -i hosts-vmware playbook-nodes.yml -vv
 
 Acesse os nodes e observe os rótulos/labels.
 
-**Caso uma mensagem aparece no menu Gerenciar Jenkins sobre dados antigos pode clicar em administrar e remover dados antigos. É um bug no jenkins que não consegue identificar os nodes XML como válidos. Após a remoção garanta que os nodes continuam ativos e os rótulos _build_ e _maven_ continuam existindo. Se não constarem nos nodes inclua-os manualmente antes de prosseguir**<br/>
+**Caso uma mensagem aparece no menu Gerenciar Jenkins sobre dados antigos pode clicar em administrar e remover dados antigos. É um bug no jenkins que não consegue identificar os nodes XML como válidos. Após a remoção garanta que os nodes continuam ativos e os rótulos _build_ e _maven_ continuam existindo. Para consultar navegue até Gerenciar Jenkins &rarr; Gerenciar nós. Se não constarem nos nodes inclua-os manualmente antes de prosseguir**<br/>
 
 **Siga para o passo [33](#_33-na-lista-de-nós-clique-no-master)**
 

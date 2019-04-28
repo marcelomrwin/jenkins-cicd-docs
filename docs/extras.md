@@ -1,10 +1,16 @@
 ### Generate jenkins plugin list
 
-https://10.1.124.128/script
+https://10.1.123.208/script
 ```
+plgs = []
+
 Jenkins.instance.pluginManager.plugins.each{
   plugin ->
-    println ("${plugin.getShortName()}:${plugin.getVersion()}")
+    plgs.add("${plugin.getShortName()}:${plugin.getVersion()}")
+}
+
+plgs.sort().each{
+  plg -> println(plg)
 }
 ```
 

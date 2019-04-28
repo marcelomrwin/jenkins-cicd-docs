@@ -42,6 +42,13 @@ Para adicionar as bibliotecas compartilhadas de funcionalidades para o pipeline 
   git commit -am 'first commit'
   git push -u origin master
   ```
+
+### Resolução de problemas
+Caso o GIT exiba mensagens de problema com o certificado do servidor Gogs execute o comando abaixo:
+```
+git config http.sslVerify false
+```
+
 ### Configurando a biblioteca no Jenkins
 Acesse **Gerenciar Jenkins &rarr; Configurar o sistema**
 

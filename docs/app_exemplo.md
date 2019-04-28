@@ -12,7 +12,7 @@ Remova as referências ao repositório git
 git remote remove origin
 ```
 
-Edite o arquivo jenkinsFile e ajuste o valor da propriedade _NEXUS_URL_ apontando para o endereço nexus do seu ambiente.
+Edite o arquivo jenkinsFile e ajuste o valor da propriedade *NEXUS_URL* apontando para o endereço nexus do seu ambiente.
 
 Crie um repositório no GOGS local
 ![](/images/fig83.png)
@@ -53,7 +53,7 @@ Uma vez que o Jenkins localizar branches conforme acima ele iniciará um build j
 Observe o job executado e o link para acessar o SonarQube.
 ![](/images/fig91.png)</br>
 
-Acesse o link http://10.1.124.133:9000/dashboard?id=com.example%3Agreetings para ter acesso ao relatório do SonarQube
+Acesse o link http://10.1.123.189:9000/dashboard?id=com.example%3Agreetings para ter acesso ao relatório do SonarQube
 ![](/images/fig92.png)</br>
 
 O jenkins exibirá uma tela com um resumo do pipeline conforme abaixo:
@@ -68,7 +68,7 @@ Acesse o Gogs https://10.1.123.206
   - selecione **GOGS**
 ![](/images/fig98.png)</br>
 
-No campo **URL de Payload** informe https://10.1.124.128/gogs-webhook/?job=hello-world-greeting
+No campo **URL de Payload** informe https://10.1.123.208/gogs-webhook/?job=hello-world-greeting
 Clique em **Adicionar Webhoook**</br>
 ![](/images/fig99.png)</br>
 

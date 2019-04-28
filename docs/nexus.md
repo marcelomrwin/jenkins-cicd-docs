@@ -3,7 +3,7 @@ Importe as roles do ansible
 
 ```
 ansible-galaxy install geerlingguy.apache --force
-ansible-galaxy install ansiblebit.oracle-java --force
+ansible-galaxy install geerlingguy.java --force
 ansible-galaxy install ansible-thoteam.nexus3-oss --force
 ```
 
