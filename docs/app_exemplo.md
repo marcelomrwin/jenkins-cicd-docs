@@ -99,4 +99,5 @@ O Jenkins utiliza um pipeline que realiza:
 - Build e testes unitários
 - Análise estática de código fonte
 - Testes de integração
+- Testes de performance simulando 50 usuários simultâneos realizando requisições na aplicação. Caso a média de resposta seja superior a 100 milliseguntos o pipeline considera como acima do mínimo aceitável e solicita uma confirmação. Esta confirmação aguarda no máximo 5 minutos para prosseguir.
 - Publicação do artefato gerado no Nexus em um repositório customizado do Nexus.
